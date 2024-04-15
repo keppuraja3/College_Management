@@ -1,0 +1,26 @@
+#navContianer {
+  color: #131331;
+}
+
+#FooterContainer {
+  position: absolute;
+  bottom: 0;
+  background: #131331;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+}
+#FooterNav {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#FooterContainer ul {
+  list-style: none;
+}
+
+#FooterContainer ul li a {
+  color: yellowgreen;
+  text-decoration: none;
+}

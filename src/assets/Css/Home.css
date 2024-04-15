@@ -1,0 +1,10 @@
+.banner-text{
+    position: relative;
+}
+.banner-text{
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 1rem;
+    background: linear-gradient(90deg ,#00000096,#00000071);
+     /* backdrop-filter: blur(5px); */
+}

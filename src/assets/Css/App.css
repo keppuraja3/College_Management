@@ -1,0 +1,33 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+#main-container {
+  transition: all 0.5s;
+  padding: 1rem;
+}
+#main-inner-container {
+  /* background: linear-gradient(95deg, rgb(218, 55, 44), rgb(233, 147, 35)); */
+  /* backdrop-filter: blur(10px);
+  box-shadow: 0 0 5px #888; */
+  color: #000;
+  overflow: hidden;
+}
+
+/* #login-container {
+  min-width: 750px;
+  max-width: 75vw;
+} */
+
+/* #login-lside {
+  background: url(/img/college_2.jpg) no-repeat;
+  background-size: contain;
+} */
