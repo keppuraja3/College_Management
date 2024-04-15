@@ -10,9 +10,6 @@ import About from "./About";
 import Home from "./Home";
 import Department from "./Department";
 import Admin from "./Admin/Admin";
-import "./assets/Css/App.css";
-import "./assets/Css/Home.css";
-import "./assets/Css/Style.css";
 import Course from "./Course";
 import Gallery from "./Gallery";
 import Contact from "./Contact";
@@ -31,6 +28,9 @@ import Events from "./Admin/Events";
 import UserManagement from "./Admin/UserManagement";
 import Report from "./Admin/Report";
 import PageNotFound from "./Admin/PageNotFound";
+import "./assets/Css/App.css";
+import "./assets/Css/Home.css";
+import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
 function App() {
   return (

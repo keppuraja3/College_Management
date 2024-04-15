@@ -32,7 +32,7 @@ function Admin() {
             <div className=" bg-light p-2 ps-3 ">
               <ul>
                 <Link to={"dashboard"}>
-                  <li className="active">
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center p-2">
                         <img
@@ -48,7 +48,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"students  "}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -64,7 +64,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"professors"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -80,7 +80,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"departments"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -96,7 +96,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"courses"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -112,7 +112,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"events"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img src="/img/event.png" alt="Events" width={27} />
@@ -124,7 +124,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"userManagement"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -140,7 +140,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"settings"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img src="/img/setting.png" alt="Settings" width={25} />
@@ -152,7 +152,7 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"report"}>
-                  <li>
+                  <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img

@@ -55,7 +55,7 @@ function Dashboard() {
             </div>
           </Col>
           <Col lg={3} md={4} sm={6} xs={12} className="p-1">
-            <div className=" rounded-3 bg-info text-center px-2 py-3 text-dark fw-bold fs-5 h-100 ">
+            <div className=" rounded-3 bg-dark text-center px-2 py-3 text-light fw-bold fs-5 h-100 ">
               <Container fluid>
                 <Row>
                   <Col lg={9}>
@@ -72,25 +72,19 @@ function Dashboard() {
         </Row>
       </Container>
       <Container fluid className="ps-1 pe-1">
-        <Row className="g-2">
-          <Col lg={4} md={12} className=" bg-info rounded-3 text-light p-3">
+        <Row className=" gy-3">
+          <Col lg={4} md={12} className=" bg-success rounded-3 text-light p-3">
             Lorem ipsum dolor sit amet consectetur a dipisicing elit.
             Necessitatibus, labore debitis reprehenderit molestiae, et mollitia
-            placeat exercitationem recusandae beatae minus nemo, nisi animi.
-            Laborum provident ratione eveniet quas distinctio placeat! Ipsum
-            quaerat voluptate veritatis. Perspiciatis, de odit nam ullam rerum
             consequuntur dolore pariatur similique fuga! Voluptatem at nesciunt
             debitis maiores accusamus, a suscipit obcaecati ea amet ducimus
             placeat aut in inventore doloremque aspernatur soluta porro totam
             aliquid explicabo facilis nihil eos! Distinctio quibusdam veniam
             dolore.
           </Col>
-          <Col lg={4} md={12} className=" bg-success rounded-3 text-light p-3">
+          <Col lg={4} md={12} className=" bg-light rounded-3 text-dark p-3">
             Lorem ipsum dolor sit amet consectetur a dipisicing elit.
             Necessitatibus, labore debitis reprehenderit molestiae, et mollitia
-            placeat exercitationem recusandae beatae minus nemo, nisi animi.
-            Laborum provident ratione eveniet quas distinctio placeat! Ipsum
-            quaerat voluptate veritatis. Perspiciatis, de odit nam ullam rerum
             consequuntur dolore pariatur similique fuga! Voluptatem at nesciunt
             debitis maiores accusamus, a suscipit obcaecati ea amet ducimus
             placeat aut in inventore doloremque aspernatur soluta porro totam

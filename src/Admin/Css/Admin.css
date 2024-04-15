@@ -27,3 +27,22 @@ body {
 .searchBox img {
   cursor: pointer;
 }
+
+
+.profile-container{
+  list-style: none;
+  font-size: medium;
+  font-weight: 800;
+  padding-left: 3px;
+  padding-top: 3px;
+  padding-right: 3px;}
+.profile-container li{
+  cursor: pointer;
+  margin-bottom: .5rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  text-align: start;
+}
+.profile-container li:hover{
+  background: #ffffff56;
+}
