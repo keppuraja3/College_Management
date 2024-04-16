@@ -14,24 +14,31 @@
     border-radius: 1rem;
     color: #ffffff;
     max-height: 350px;
-    overflow: hidden;
-    overflow-y: scroll ;
     box-shadow: 0 0 10px rgb(0, 0, 0);
 }
 .notification-container h3{
     text-align: center;
     color: #ffffff;
 }
-.notification-container ul{
+
+.notification-container  ul:nth-child(1){
     /* background: red; */
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 1px;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 230px;
     border-radius: .5rem;
     list-style: none;
     background: rgb(33, 37, 41);
     transition: all .4s;
 }
+
+.notification-container  ul::-webkit-scrollbar{
+    appearance: none;
+}
+
 .notification-container ul li{
     text-align: center;
     padding: 10px;
@@ -45,4 +52,7 @@
 #justify-tab-example-tab-events,#justify-tab-example-tab-resutls{
     border-radius: 1rem;
     margin-bottom: 0;
+    overflow: hidden;
+    color:inherit;
+    background: #000;
 }

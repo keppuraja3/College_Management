@@ -61,7 +61,7 @@ function Admin_Header() {
           <Navbar.Brand>
             <img
               alt=""
-              src="/img/circle-arrow-right.png"
+              src="/img/menu.png"
               width="30"
               onClick={offcanvasHandleShow}
               className="d-md-none pe-1"
@@ -83,39 +83,30 @@ function Admin_Header() {
               {/* : &nbsp; {userName} */}
             </Badge>
           </div>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto text-warning text-center mb-0">
-              <div className=" d-lg-flex d-grid  justify-content-center ">
-                {/* <Nav.Link className="me-sm-2 d-flex align-items-center justify-content-center ">
+          <Nav className="ms-auto text-warning text-center mb-0">
+            <div className=" d-flex  justify-content-center ">
+              {/* <Nav.Link className="me-sm-2 d-flex align-items-center justify-content-center ">
                   <img src="/img/search-light.png" alt="user" width={23} />
                 </Nav.Link> */}
-                <Nav.Link className="me-sm-2 d-flex align-items-center justify-content-center ">
-                  <img
-                    src="/img/notification-light.png"
-                    alt="user"
-                    width={23}
-                  />
-                </Nav.Link>
-                <Nav.Link className="me-sm-2">
-                  <img
-                    src="/img/user_2.png"
-                    alt="user"
-                    ref={target}
-                    onClick={() => setProfileShow(!profileShow)}
-                    width={40}
-                  />
-                  <div className=" text-light text-uppercase">
-                    <Badge bg="success" className=" text-light text-uppercase">
-                      {userRole}
-
-                      {/* : &nbsp; {userName} */}
-                    </Badge>
-                  </div>
-                </Nav.Link>
-              </div>
-            </Nav>
-          </Navbar.Collapse>
+              <Nav.Link className="me-sm-2 d-flex align-items-center justify-content-center ">
+                <img src="/img/notification-light.png" alt="user" width={23} />
+              </Nav.Link>
+              <Nav.Link className="me-sm-2">
+                <img
+                  src="/img/user_2.png"
+                  alt="user"
+                  ref={target}
+                  onClick={() => setProfileShow(!profileShow)}
+                  width={40}
+                />
+                <div className=" text-light text-uppercase">
+                  <Badge bg="success" className=" text-light text-uppercase">
+                    {userRole}
+                  </Badge>
+                </div>
+              </Nav.Link>
+            </div>
+          </Nav>
         </Container>
       </Navbar>
 
@@ -141,7 +132,7 @@ function Admin_Header() {
       <Offcanvas show={offcanvasShow} onHide={offcanvasHandleClose}>
         <Offcanvas.Header className="bg-dark">
           <div className="d-flex justify-content-between w-100 text-light">
-            <Offcanvas.Title>Offcanvass</Offcanvas.Title>
+            <Offcanvas.Title>Atrs College</Offcanvas.Title>
             <img
               src="/img/circle-arrow-left.png"
               alt="logout arrow"
@@ -150,7 +141,7 @@ function Admin_Header() {
             />
           </div>
         </Offcanvas.Header>
-        <Offcanvas.Body className="bg-dark">
+        <Offcanvas.Body className="bg-dark ps-1">
           {/* side container content  */}
           <div className="leftSideContainer">
             <div className=" p-2 ps-3 ">
@@ -160,7 +151,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className=" p-2">
                         <img
-                          src="/img/dashboard.png"
+                          src="/img/dashboard-light.png"
                           alt="Dashboard"
                           width={25}
                         />
@@ -174,7 +165,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
-                          src="/img/graduation-cap.svg"
+                          src="/img/graduation-light.png"
                           alt="Students"
                           width={25}
                         />
@@ -188,7 +179,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
-                          src="/img/briefcase-dark.svg"
+                          src="/img/professor-light.png"
                           alt="Professors"
                           width={25}
                         />
@@ -202,7 +193,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
-                          src="/img/hierarchy.png"
+                          src="/img/department-light.png"
                           alt="Departments"
                           width={25}
                         />
@@ -216,7 +207,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
-                          src="/img/open-book.png"
+                          src="/img/book-light.png"
                           alt="Courses"
                           width={25}
                         />
@@ -229,7 +220,11 @@ function Admin_Header() {
                   <li className="py-2">
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
-                        <img src="/img/event.png" alt="Events" width={27} />
+                        <img
+                          src="/img/event-light.png"
+                          alt="Events"
+                          width={27}
+                        />
                       </div>
                       <div>Events</div>
                     </div>
@@ -240,7 +235,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
-                          src="/img/user-1.png"
+                          src="/img/user-light.png"
                           alt="Professors"
                           width={25}
                         />
@@ -253,7 +248,11 @@ function Admin_Header() {
                   <li className="py-2">
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
-                        <img src="/img/setting.png" alt="Settings" width={25} />
+                        <img
+                          src="/img/setting-light.png"
+                          alt="Settings"
+                          width={25}
+                        />
                       </div>
                       <div>Settings</div>
                     </div>
@@ -264,7 +263,7 @@ function Admin_Header() {
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
-                          src="/img/exclamation.svg"
+                          src="/img/report-light.png"
                           alt="Report"
                           width={25}
                         />

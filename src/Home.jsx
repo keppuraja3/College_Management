@@ -80,10 +80,12 @@ function Home() {
       <Container fluid>
         <Row>
           <Col md={2}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
-            reprehenderit quod a ad sapiente eligendi odio similique quaerat
-            maxime quos maiores, dicta magni quasi harum provident sed alias
-            ipsa at.
+            <div className=" bg-info rounded-3 p-3 m-3 h-100">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
+              reprehenderit quod a ad sapiente eligendi odio similique quaerat
+              maxime quos maiores, dicta magni quasi harum provident sed alias
+              ipsa at.
+            </div>
           </Col>
           <Col md={10}>
             {/* Result and evets notification content */}
@@ -95,48 +97,46 @@ function Home() {
               >
                 <Tab eventKey="resutls" title="Results">
                   <ul>
-                    <marquee direction="top" loop>
-                      <li>
-                        B.com(CA) 2024-May 5th sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.A Tamil 2024-April 2nd sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.A English 2023-Nov 4th sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.A Math 2024-Nov 1st sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.com(CA) 2024-May 5th sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.com(CA) 2024-May 5th sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.A Tamil 2024-April 2nd sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.A English 2023-Nov 4th sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.A Math 2024-Nov 1st sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                      <li>
-                        B.com(CA) 2024-May 5th sem result{" "}
-                        <a href="#">Click here</a>{" "}
-                      </li>
-                    </marquee>
+                    <li>
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A Tamil 2024-April 2nd sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A English 2023-Nov 4th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A Math 2024-Nov 1st sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A Tamil 2024-April 2nd sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A English 2023-Nov 4th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A Math 2024-Nov 1st sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
                   </ul>
                 </Tab>
                 <Tab eventKey="events" title="Events">

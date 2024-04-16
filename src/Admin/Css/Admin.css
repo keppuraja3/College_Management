@@ -10,6 +10,7 @@ body {
 .leftSideContainer ul {
   padding-left: 0px;
 }
+
 .leftSideContainer ul li {
   list-style: none;
   color: #fff;
@@ -18,16 +19,18 @@ body {
   border-radius: 0.5rem;
   transition: all 0.3s ease-out;
 }
+
 .leftSideContainer ul li:hover, .active {
   background: #3c4b5267;
 }
+
 .searchBox input {
   outline: none;
 }
+
 .searchBox img {
   cursor: pointer;
 }
-
 
 .profile-container{
   list-style: none;
@@ -35,7 +38,9 @@ body {
   font-weight: 800;
   padding-left: 3px;
   padding-top: 3px;
-  padding-right: 3px;}
+  padding-right: 3px;
+}
+
 .profile-container li{
   cursor: pointer;
   margin-bottom: .5rem;
@@ -43,6 +48,7 @@ body {
   border-radius: .5rem;
   text-align: start;
 }
+
 .profile-container li:hover{
   background: #ffffff56;
 }

@@ -68,7 +68,7 @@ function Admin() {
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
-                          src="/img/briefcase-dark.svg"
+                          src="/img/professor-light.png"
                           alt="Professors"
                           width={25}
                         />
@@ -147,7 +147,11 @@ function Admin() {
                   <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
-                        <img src="/img/setting.png" alt="Settings" width={25} />
+                        <img
+                          src="/img/setting-light.png"
+                          alt="Settings"
+                          width={25}
+                        />
                       </div>
                       <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Settings
@@ -160,7 +164,7 @@ function Admin() {
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
-                          src="/img/exclamation.svg"
+                          src="/img/report-light.png"
                           alt="Report"
                           width={25}
                         />

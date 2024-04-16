@@ -32,10 +32,15 @@ import "./assets/Css/App.css";
 import "./assets/Css/Home.css";
 import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
+import Users from "./Users";
+import User from "./User";
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/users" element={<Users />}></Route>
+        <Route path="/users/user/:id" element={<User />}></Route>
+
         <Route path="" element={<Header />}>
           <Route path="" element={<Home />} />
           <Route path="course" element={<Course />} />
