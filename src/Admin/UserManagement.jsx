@@ -33,6 +33,7 @@ function UserManagement() {
     userRole: "",
   });
 
+  //Password visibility eye changeing content----
   const ChangePassVisible = (event) => {
     if (isEyeShow === false) {
       event.target.src = "/img/closed-eyes-dark.png";
@@ -45,10 +46,11 @@ function UserManagement() {
       setPassType("password");
     }
   };
-
+  //Add user inputed data to the variable-----
   const addUserData = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+
   //user input validation checking variables---
   const [userValid, setUserValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
@@ -63,6 +65,7 @@ function UserManagement() {
   const [roleError, setRoleError] = useState("");
   const [passError, setPassError] = useState("");
 
+  //Register form validation and get data from backend---
   const handleSubmit = async (event) => {
     event.preventDefault();
     setUserValid(false);
@@ -89,7 +92,6 @@ function UserManagement() {
     //Email validation------
     if (!userData.userEmail == "") {
       const isEmail = userData.userEmail.match(emailPattern);
-      console.log(isEmail);
       if (isEmail) {
         setEmailError("");
         setEmailValid(true);
@@ -141,6 +143,7 @@ function UserManagement() {
     }
   };
 
+  //Post data to the backend after the validation checking---
   if (
     userValid == true &&
     passValid == true &&

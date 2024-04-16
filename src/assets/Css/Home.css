@@ -8,3 +8,41 @@
     background: linear-gradient(90deg ,#00000096,#00000071);
      /* backdrop-filter: blur(5px); */
 }
+
+.notification-container{
+    padding: 0.5rem;margin: 1rem;
+    border-radius: 1rem;
+    color: #ffffff;
+    max-height: 350px;
+    overflow: hidden;
+    overflow-y: scroll ;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+.notification-container h3{
+    text-align: center;
+    color: #ffffff;
+}
+.notification-container ul{
+    /* background: red; */
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 1px;
+    border-radius: .5rem;
+    list-style: none;
+    background: rgb(33, 37, 41);
+    transition: all .4s;
+}
+.notification-container ul li{
+    text-align: center;
+    padding: 10px;
+    border-radius: .5rem;
+}
+.notification-container ul li:hover{
+    background: #91909093;
+
+}
+
+#justify-tab-example-tab-events,#justify-tab-example-tab-resutls{
+    border-radius: 1rem;
+    margin-bottom: 0;
+}

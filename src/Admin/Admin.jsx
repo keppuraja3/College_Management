@@ -29,19 +29,19 @@ function Admin() {
             className="pe-0 ps-1 d-none d-lg-block m-0 leftSideContainer "
           >
             {/* side container content  */}
-            <div className=" bg-light p-2 ps-3 ">
+            <div className=" bg-dark  p-2 ps-3 ">
               <ul>
                 <Link to={"dashboard"}>
                   <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center p-2">
                         <img
-                          src="/img/dashboard.png"
+                          src="/img/dashboard-light.png"
                           alt="Dashboard"
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Dashboard
                       </div>
                     </div>
@@ -52,12 +52,12 @@ function Admin() {
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
-                          src="/img/graduation-cap.svg"
+                          src="/img/graduation-light.png"
                           alt="Students"
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Students
                       </div>
                     </div>
@@ -73,7 +73,7 @@ function Admin() {
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Professors
                       </div>
                     </div>
@@ -84,12 +84,12 @@ function Admin() {
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
-                          src="/img/hierarchy.png"
+                          src="/img/department-light.png"
                           alt="Departments"
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Departments
                       </div>
                     </div>
@@ -100,12 +100,12 @@ function Admin() {
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
-                          src="/img/open-book.png"
+                          src="/img/book-light.png"
                           alt="Courses"
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Courses
                       </div>
                     </div>
@@ -115,9 +115,13 @@ function Admin() {
                   <li className="py-2">
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
-                        <img src="/img/event.png" alt="Events" width={27} />
+                        <img
+                          src="/img/event-light.png"
+                          alt="Events"
+                          width={27}
+                        />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Events
                       </div>
                     </div>
@@ -128,12 +132,12 @@ function Admin() {
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
-                          src="/img/user-1.png"
+                          src="/img/user-light.png"
                           alt="Professors"
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         User Management
                       </div>
                     </div>
@@ -145,7 +149,7 @@ function Admin() {
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img src="/img/setting.png" alt="Settings" width={25} />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Settings
                       </div>
                     </div>
@@ -161,7 +165,7 @@ function Admin() {
                           width={25}
                         />
                       </div>
-                      <div className="col-lg-10 text-dark d-none d-lg-flex align-items-center ">
+                      <div className="col-lg-10 d-none d-lg-flex align-items-center ">
                         Report
                       </div>
                     </div>
