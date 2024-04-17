@@ -24,6 +24,10 @@ body {
   background: #80898d9f;
 }
 
+.searchBox{
+  box-shadow: 0 0 5px black;
+}
+
 .searchBox input {
   outline: none;
 }

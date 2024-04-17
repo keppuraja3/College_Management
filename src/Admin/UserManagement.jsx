@@ -16,7 +16,26 @@ import "./AddUser.css";
 function UserManagement() {
   document.title = "User Management";
 
-  //Add user section start
+  //Close register form--
+  const handleClose = () => {
+    setShow(false);
+    setUserError("");
+    setEmailError("");
+    setMobileNoError("");
+    setRoleError("");
+    setPassError("");
+    setUserData({
+      ...userData,
+      userName: "",
+      userEmail: "",
+      userMobileNo: "",
+      userRole: "",
+      userPassword: "",
+    });
+  };
+
+  //Open register form---
+  const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
   const [isEyeShow, setIsEye] = useState(false);
@@ -68,11 +87,6 @@ function UserManagement() {
   //Register form validation and get data from backend---
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setUserValid(false);
-    setPassValid(false);
-    setEmailValid(false);
-    setRoleValid(false);
-    setMobileNoValid(false);
 
     //Regex for password and email----
     const passwordPattern =
@@ -85,9 +99,11 @@ function UserManagement() {
         setUserValid(true);
         setUserError("");
       } else {
+        setUserValid(false);
         setUserError("Username minimum have 3 characters");
       }
     } else {
+      setUserValid(false);
       setUserError("Please enter username");
     }
 
@@ -98,9 +114,11 @@ function UserManagement() {
         setEmailError("");
         setEmailValid(true);
       } else {
+        setEmailValid(false);
         setEmailError("Please enter valid email");
       }
     } else {
+      setEmailValid(false);
       setEmailError("Please enter email");
     }
 
@@ -110,9 +128,11 @@ function UserManagement() {
         setMobileNoValid(true);
         setMobileNoError("");
       } else {
+        setMobileNoValid(false);
         setMobileNoError("Mobile no only in 10 digits");
       }
     } else {
+      setMobileNoValid(false);
       setMobileNoError("Please enter mobile no");
     }
 
@@ -121,6 +141,7 @@ function UserManagement() {
       setRoleValid(true);
       setRoleError("");
     } else {
+      setRoleValid(false);
       setRoleError("Please select the role");
     }
 
@@ -133,14 +154,17 @@ function UserManagement() {
           setPassValid(true);
           setPassError("");
         } else {
+          setPassValid(false);
           setPassError(
             "Password must have one number, one capital letter, one small letter and one symbol"
           );
         }
       } else {
+        setPassValid(false);
         setPassError("Password must have 8 digits");
       }
     } else {
+      setPassValid(false);
       setPassError("Please enter the password");
     }
 
@@ -160,63 +184,54 @@ function UserManagement() {
         .catch((err) => {
           return err;
         });
-      console.log(result);
 
-      // const response = await axios.get("http://localhost:3030/viewUsers");
-      // setUsersData(response.data);
       getData();
       handleClose();
     }
   };
-  //Add user section end
 
-  //Edit userData function
+  //Edit userData function-------
   const editUserData = () => {};
-  //Edit userData function
 
-  //delete userData function
+  //delete userData function--------
   const deleteUserData = async (id) => {
     getData();
   };
-  //delete  userData function
+
+  //Create variable for store users data------
   const [usersData, setUsersData] = useState([]);
+
+  //Create variable for store filtered user data-----
+  const [filterUsers, setFilterUsers] = useState([]);
+
+  //Register form show and hide control variable----
   const [show, setShow] = useState(false);
 
-  //Close register form--
-  const handleClose = () => {
-    setShow(false);
-    setUserError("");
-    setEmailError("");
-    setMobileNoError("");
-    setRoleError("");
-    setPassError("");
-    setUserData({
-      ...userData,
-      userName: "",
-      userEmail: "",
-      userMobileNo: "",
-      userRole: "",
-      userPassword: "",
-    });
-  };
-
-  //Open register form---
-  const handleShow = () => setShow(true);
-
+  //Get users data from backend------
   const getData = async () => {
     await axios
       .get("http://localhost:3030/viewUsers")
       .then((response) => {
         setUsersData(response.data);
+        setFilterUsers(response.data);
       })
       .catch((err) => console.error(err));
   };
+
+  //Load users data to the table----
   useEffect(() => {
     getData();
   }, []);
-  const [searchValue, setSearchValue] = useState("");
-  const searchUser = (event) => {
-    setSearchValue(event.target.value);
+
+  //Search user details-----
+  const searchUser = (e) => {
+    const searchText = e.target.value.toLowerCase();
+    const filteredUsers = usersData.filter((user) => {
+      if (user.userName.toLowerCase().includes(searchText)) {
+        return user;
+      }
+    });
+    setFilterUsers(filteredUsers);
   };
 
   return (
@@ -375,14 +390,14 @@ function UserManagement() {
             </tr>
           </thead>
           <tbody>
-            {usersData.map((uData) => (
-              <tr key={uData.id}>
-                <td>{uData.id}</td>
-                <td>{uData.userName}</td>
+            {filterUsers.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.userName}</td>
                 <td>
-                  <Badge bg="success">{uData.userRole}</Badge>
+                  <Badge bg="success">{user.userRole}</Badge>
                 </td>
-                <td>{uData.userPassword}</td>
+                <td>{user.userPassword}</td>
                 <td>
                   <Button variant="primary" onClick={editUserData}>
                     Edit
@@ -390,7 +405,7 @@ function UserManagement() {
                   <Button
                     variant="danger"
                     onClick={() => {
-                      deleteUserData(uData.id);
+                      deleteUserData(user.id);
                     }}
                   >
                     Delete
