@@ -179,7 +179,7 @@ function Admin() {
             </div>
           </Col>
           {/* Right Side Container  */}
-          <Col lg={10} className="pt-3 bg-info ">
+          <Col lg={10} className="pt-3 ">
             <Outlet />
           </Col>
         </Row>

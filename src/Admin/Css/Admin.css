@@ -5,8 +5,8 @@
 }
 body {
   transition: all 0.4s;
-  background: #4d4d4d;
 }
+
 .leftSideContainer ul {
   padding-left: 0px;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .leftSideContainer ul li:hover, .active {
-  background: #3c4b5267;
+  background: #80898d9f;
 }
 
 .searchBox input {

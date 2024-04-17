@@ -21,11 +21,9 @@
     color: #ffffff;
 }
 
-.notification-container  ul:nth-child(1){
-    /* background: red; */
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 1px;
+.notification-container  ul{
+    padding: 5px 2px 5px 15px ;
+    margin: 0px;
     overflow: scroll;
     overflow-x: hidden;
     max-height: 230px;

@@ -77,17 +77,18 @@ function Home() {
         </Carousel.Item>
       </Carousel>
 
-      <Container fluid>
-        <Row>
-          <Col md={2}>
-            <div className=" bg-info rounded-3 p-3 m-3 h-100">
+      {/* Notification container */}
+      <Container fluid className=" overflow-hidden ">
+        <Row className="gy-3">
+          <Col md={3} className="pe-0">
+            <div className=" bg-info rounded-3 p-3 mt-3 h-100 rounded-3">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
               reprehenderit quod a ad sapiente eligendi odio similique quaerat
               maxime quos maiores, dicta magni quasi harum provident sed alias
               ipsa at.
             </div>
           </Col>
-          <Col md={10}>
+          <Col md={9} className="px-0">
             {/* Result and evets notification content */}
             <div className="notification-container bg-warning">
               <Tabs
@@ -165,6 +166,24 @@ function Home() {
                 </Tab>
               </Tabs>
             </div>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* No of count of students and staffs container  */}
+      <Container className="">
+        <Row>
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <h1>Students</h1>
+          </Col>
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <h1>Students</h1>
+          </Col>
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <h1>Students</h1>
+          </Col>
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <h1>Students</h1>
           </Col>
         </Row>
       </Container>

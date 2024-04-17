@@ -48,6 +48,7 @@ function App() {
           <Route path="department" element={<Department />} />
           <Route path="about" element={<About />} />
         </Route>
+
         <Route path="/admin" element={<Admin />}>
           <Route path="*" element={<PageNotFound />} />
           <Route path="" element={<Dashboard />} />

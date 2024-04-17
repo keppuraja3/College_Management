@@ -206,22 +206,20 @@ function Header() {
               </Link>
 
               <Link
-                className=" m-1 align-items-center d-flex justify-content-center "
+                className=" m-1 align-items-center d-flex justify-content-center me-2 "
                 to="/about"
               >
                 About
               </Link>
 
               <div className=" d-flex justify-content-center ">
-                <Nav.Link>
-                  <Button
-                    onClick={handleShow}
-                    className=" fw-bold "
-                    variant="outline-warning"
-                  >
-                    Login
-                  </Button>
-                </Nav.Link>
+                <Button
+                  onClick={handleShow}
+                  className=" fw-bold "
+                  variant="outline-warning"
+                >
+                  Login
+                </Button>
               </div>
             </Nav>
           </Navbar.Collapse>

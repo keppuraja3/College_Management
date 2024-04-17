@@ -64,7 +64,7 @@ function Admin_Header() {
               src="/img/menu.png"
               width="30"
               onClick={offcanvasHandleShow}
-              className="d-md-none pe-1"
+              className="d-lg-none pe-1"
             />
             <Link to="/admin">
               <img

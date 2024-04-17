@@ -9,7 +9,7 @@ function Dashboard() {
 
   return (
     <>
-      <Container fliud className="ps-1 pe-1 ">
+      <Container fliud className="ps-3 pe-1 ">
         <Row className="g-3 mb-3">
           <Col lg={3} md={4} sm={6} xs={12} className="p-1">
             <div className=" rounded-3 bg-warning text-center px-2 py-3 text-black fw-bold fs-5 h-100 ">
@@ -81,7 +81,7 @@ function Dashboard() {
           </Col>{" "}
         </Row>
       </Container>
-      <Container fluid className="ps-1 pe-1">
+      <Container fluid className="ps-3 pe-1">
         <Row className=" gy-3">
           <Col lg={4} md={12} className=" bg-success rounded-3 text-light p-3">
             Lorem ipsum dolor sit amet consectetur a dipisicing elit.

@@ -2,3 +2,26 @@
   text-decoration: none !important;
   color: rgb(253, 253, 0) !important;
 }
+
+
+#basic-navbar-nav .navbar-nav a{
+  position: relative;
+}
+
+
+#basic-navbar-nav .navbar-nav a::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 0%;
+  border-radius: 1rem;
+  background: #fff;
+  transition: all .4s;
+}
+
+#basic-navbar-nav .navbar-nav a:hover::before{
+  width: 100%;
+}
+
+
