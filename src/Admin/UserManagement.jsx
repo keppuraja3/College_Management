@@ -73,6 +73,8 @@ function UserManagement() {
     setEmailValid(false);
     setRoleValid(false);
     setMobileNoValid(false);
+
+    //Regex for password and email----
     const passwordPattern =
       /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
@@ -125,7 +127,7 @@ function UserManagement() {
     //Password validation------
     if (!userData.userPassword == "") {
       const isPassValid = userData.userPassword.match(passwordPattern);
-      console.log(isPassValid);
+
       if (userData.userPassword.length >= 8) {
         if (isPassValid) {
           setPassValid(true);
@@ -141,35 +143,31 @@ function UserManagement() {
     } else {
       setPassError("Please enter the password");
     }
+
+    //Post data to the backend after the validation checking---
+    if (
+      userValid == true &&
+      passValid == true &&
+      emailValid == true &&
+      roleValid == true &&
+      mobilNoValid == true
+    ) {
+      const result = await axios
+        .post("http://localhost:3030/addUser", userData)
+        .then((response) => {
+          return response.data;
+        })
+        .catch((err) => {
+          return err;
+        });
+      console.log(result);
+
+      // const response = await axios.get("http://localhost:3030/viewUsers");
+      // setUsersData(response.data);
+      getData();
+      handleClose();
+    }
   };
-
-  //Post data to the backend after the validation checking---
-  if (
-    userValid == true &&
-    passValid == true &&
-    emailValid == true &&
-    roleValid == true &&
-    mobilNoValid == true
-  ) {
-    axios
-      .post("http://localhost:3030/addUser", userData)
-      .then((response) => console.log(response.data))
-      .catch((err) => console.error(err));
-
-    setUserData({
-      ...userData,
-      userName: "",
-      userEmail: "",
-      userMobileNo: "",
-      userRole: "",
-      userPassword: "",
-    });
-    // const response = await axios.get("http://localhost:3030/viewUsers");
-    // setUsersData(response.data);
-    getData();
-    setShow(false);
-  }
-
   //Add user section end
 
   //Edit userData function
@@ -177,7 +175,9 @@ function UserManagement() {
   //Edit userData function
 
   //delete userData function
-  const deleteUserData = () => {};
+  const deleteUserData = async (id) => {
+    getData();
+  };
   //delete  userData function
   const [usersData, setUsersData] = useState([]);
   const [show, setShow] = useState(false);
@@ -362,7 +362,8 @@ function UserManagement() {
           </Modal>
           {/* User Add Form Modal End*/}
         </div>
-        {/* user list table */}
+
+        {/* User list table */}
         <Table hover className=" text-center rounded-3  fs-6 shadow-lg">
           <thead>
             <tr>
@@ -386,7 +387,12 @@ function UserManagement() {
                   <Button variant="primary" onClick={editUserData}>
                     Edit
                   </Button>{" "}
-                  <Button variant="danger" onClick={deleteUserData}>
+                  <Button
+                    variant="danger"
+                    onClick={() => {
+                      deleteUserData(uData.id);
+                    }}
+                  >
                     Delete
                   </Button>
                 </td>
