@@ -10,7 +10,8 @@
 }
 
 .notification-container{
-    padding: 0.5rem;margin: 1rem;
+    padding: 0.5rem;
+    margin: 1rem;
     border-radius: 1rem;
     color: #ffffff;
     max-height: 350px;

@@ -88,6 +88,12 @@ function UserManagement() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setUserValid(false);
+    setEmailValid(false);
+    setMobileNoValid(false);
+    setRoleValid(false);
+    setPassValid(false);
+
     //Regex for password and email----
     const passwordPattern =
       /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

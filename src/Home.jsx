@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
-import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/esm/Container";
 import Carousel from "react-bootstrap/Carousel";
-import Tab from "react-bootstrap/Tab";
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+// Components
+import Header from "./Header";
+import Footer from "./Footer";
+// Css files
 import "bootstrap/dist/css/bootstrap.css";
 import "./assets/Css/Style.css";
 import "./assets/Css/Home.css";
-import Container from "react-bootstrap/esm/Container";
+
 function Home() {
+  // Page title
   document.title = "Arts College";
 
+  // Carousel functions-----maybe
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -81,11 +86,14 @@ function Home() {
       <Container fluid className=" overflow-hidden ">
         <Row className="gy-3">
           <Col md={3} className="pe-0">
-            <div className=" bg-info rounded-3 p-3 mt-3 h-100 rounded-3">
+            <div className=" bg-info rounded-3 p-3 my-3  rounded-3">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
               reprehenderit quod a ad sapiente eligendi odio similique quaerat
               maxime quos maiores, dicta magni quasi harum provident sed alias
-              ipsa at.
+              maxime quos maiores, dicta magni quasi harum provident sed alias
+              maxime quos maiores, dicta magni quasi harum provident sed alias
+              maxime quos maiores, dicta magni quasi maiores, dicta magni quasi
+              harum provident sed alias ipsa at.
             </div>
           </Col>
           <Col md={9} className="px-0">

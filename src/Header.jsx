@@ -49,7 +49,7 @@ function Header() {
     }
   };
 
-  //password type changing variable--
+  // Password type changing variable--
   const [passType, setPassType] = useState("password");
 
   // Get user data from backend and store into the variable--
@@ -59,7 +59,7 @@ function Header() {
     setInputedUser({ ...inputedUser, [e.target.name]: e.target.value });
   };
 
-  //username and password validation variables---
+  // Username and password validation variables---
   const [userValid, setUserValid] = useState(false);
   const [passValid, setPassValid] = useState(false);
   const [userError, setUserError] = useState("");
@@ -68,7 +68,7 @@ function Header() {
   const loginCheck = async (event) => {
     event.preventDefault();
 
-    //username validation check
+    // Username validation check
     if (!inputedUser.UserName == "") {
       if (inputedUser.UserName.length >= 3) {
         setUserError("");
@@ -81,7 +81,8 @@ function Header() {
       setUserError("Plese fill this field");
       setUserValid(false);
     }
-    //password validation check
+
+    // Password validation check
     if (!inputedUser.UserPassword == "") {
       if (inputedUser.UserPassword.length >= 8) {
         setPassError("");
@@ -95,42 +96,42 @@ function Header() {
       setPassValid(false);
     }
 
-    //check user data to the backend
+    // Check user data to the backend
 
     if (userValid == true && passValid == true) {
       //-----Get user data from database-----
 
-      const response = await axios.get(
-        `http://localhost:3030/viewUser/${inputedUser.UserName}`
-      );
+      const response = await axios
+        .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
+        .then((res) => {
+          return res;
+        });
 
-      setTimeout(() => {
-        if (response.data.userName == inputedUser.UserName) {
-          if (response.data.userPassword == inputedUser.UserPassword) {
-            window.localStorage.setItem(
-              "Arts_College_User_Id",
-              response.data.userName
-            );
-            window.localStorage.setItem(
-              "Arts_College_User_Role",
-              response.data.userRole
-            );
-            window.localStorage.setItem(
-              "Arts_College_User_Email",
-              response.data.userEmail
-            );
-            window.localStorage.setItem(
-              "Arts_College_User_MobileNo",
-              response.data.userMobileNo
-            );
-            navigate("/admin");
-          } else {
-            setPassError("Password is incorrect!!");
-          }
+      if (response.data.userName == inputedUser.UserName) {
+        if (response.data.userPassword == inputedUser.UserPassword) {
+          window.localStorage.setItem(
+            "Arts_College_User_Id",
+            response.data.userName
+          );
+          window.localStorage.setItem(
+            "Arts_College_User_Role",
+            response.data.userRole
+          );
+          window.localStorage.setItem(
+            "Arts_College_User_Email",
+            response.data.userEmail
+          );
+          window.localStorage.setItem(
+            "Arts_College_User_MobileNo",
+            response.data.userMobileNo
+          );
+          navigate("/admin");
         } else {
-          setUserError("Username is wrong!");
+          setPassError("Password is incorrect!!");
         }
-      }, 2000);
+      } else {
+        setUserError("Username is wrong!");
+      }
     }
   };
 
