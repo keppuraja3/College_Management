@@ -201,7 +201,18 @@ function UserManagement() {
 
   //delete userData function--------
   const deleteUserData = async (id) => {
-    getData();
+    const isDelete = confirm("Are you sure. You want to delte this data? ");
+    if (isDelete) {
+      const deleteOutput = await axios
+        .get(`http://localhost:3030/deleteUserById/${id}`)
+        .then((res) => {
+          return res;
+        })
+        .catch((err) => {
+          return err;
+        });
+      getData();
+    }
   };
 
   //Create variable for store users data------
