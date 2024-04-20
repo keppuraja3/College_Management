@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { MdDelete, MdEdit } from "react-icons/md";
+
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -129,7 +131,7 @@ function UserManagement() {
 
     //Mobile No validation-------
     if (!userData.userMobileNo == "") {
-      if (userData.userMobileNo.length >= 10) {
+      if (userData.userMobileNo.length == 10) {
         setMobileNoValid(true);
         setMobileNoError("");
       } else {
@@ -283,9 +285,11 @@ function UserManagement() {
               className=" border-0 bg-transparent "
               placeholder="Search"
               onChange={searchUser}
+              style={{ maxWidth: "150px" }}
             />
             <img src="/img/search.png" width={20} alt="" />
           </div>
+          <h3>User Table</h3>
           <Button
             onClick={handleShow}
             className=" fw-bold mb-2 "
@@ -448,21 +452,24 @@ function UserManagement() {
                 </td>
                 <td>{user.userMobileNo}</td>
                 <td>{user.userPassword}</td>
-                <td>
+                <td className=" d-flex justify-content-center align-items-center ">
                   <Button
                     variant="primary"
-                    className="mb-2 mb-sm-0  me-1"
+                    className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
                     onClick={() => editUserData(user)}
                   >
-                    Edit
+                    <MdEdit />
+                    &nbsp;Edit
                   </Button>
                   <Button
                     variant="danger"
+                    className=" d-flex justify-content-center align-items-center "
                     onClick={() => {
                       deleteUserData(user.id);
                     }}
                   >
-                    Delete
+                    <MdDelete />
+                    &nbsp;Delete
                   </Button>
                 </td>
               </tr>

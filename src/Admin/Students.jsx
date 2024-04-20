@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaUserGraduate } from "react-icons/fa";
+import { MdDelete, MdEdit } from "react-icons/md";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
@@ -8,14 +10,21 @@ import Badge from "react-bootstrap/Badge";
 import { Link, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import RegFormBg from "/img/logo.png";
 import "./AddUser.css";
 
 function Students() {
+  //Page Title---
   document.title = "Students";
+
+  //Open register form---
+  const handleShow = () => {
+    setShow(true);
+  };
 
   //Close register form--
   const handleClose = () => {
@@ -25,23 +34,14 @@ function Students() {
     setMobileNoError("");
     setRoleError("");
     setPassError("");
-    setUserData({
-      ...userData,
-      userName: "",
-      userEmail: "",
-      userMobileNo: "",
-      userRole: "",
-      userPassword: "",
-    });
+    setUserData({});
+    setPassType("password");
   };
 
-  //Open register form---
-  const handleShow = () => setShow(true);
-
   const navigate = useNavigate();
-  const [isEyeShow, setIsEye] = useState(false);
 
   //password type changing variable--
+  const [isEyeShow, setIsEye] = useState(false);
   const [passType, setPassType] = useState("password");
 
   //User data storing variables--
@@ -66,6 +66,7 @@ function Students() {
       setPassType("password");
     }
   };
+
   //Add user inputed data to the variable-----
   const addUserData = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -85,9 +86,6 @@ function Students() {
   const [roleError, setRoleError] = useState("");
   const [passError, setPassError] = useState("");
 
-  // Form title useState
-  const [formTitle, setFormTitle] = useState("Add Use");
-
   //Register form validation and get data from backend---
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -101,7 +99,6 @@ function Students() {
     //Regex for password and email----
     const passwordPattern =
       /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
     const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
 
     //Username validation------
@@ -187,26 +184,45 @@ function Students() {
       roleValid == true &&
       mobilNoValid == true
     ) {
-      const result = await axios
-        .post("http://localhost:3030/addUser", userData)
-        .then((response) => {
-          return response.data;
-        })
-        .catch((err) => {
-          return err;
-        });
+      if (userData.id) {
+        const result = await axios
+          .post(`http://localhost:3030/updateUserById/${userData.id}`, userData)
+          .then((response) => {
+            return response.data;
+          })
+          .catch((err) => {
+            return err;
+          });
+      } else {
+        const result = await axios
+          .post("http://localhost:3030/addUser", userData)
+          .then((response) => {
+            return response.data;
+          })
+          .catch((err) => {
+            return err;
+          });
+      }
 
       getData();
       handleClose();
+      setUserValid(false);
+      setEmailValid(false);
+      setMobileNoValid(false);
+      setRoleValid(false);
+      setPassValid(false);
     }
   };
 
   //Edit userData function-------
-  const editUserData = () => {};
+  const editUserData = (user) => {
+    setUserData(user);
+    handleShow();
+  };
 
   //delete userData function--------
   const deleteUserData = async (id) => {
-    const isDelete = confirm("Are you sure. You want to delte this data? ");
+    const isDelete = confirm("Are you sure. You want to delete this data? ");
     if (isDelete) {
       const deleteOutput = await axios
         .get(`http://localhost:3030/deleteUserById/${id}`)
@@ -263,16 +279,16 @@ function Students() {
     <>
       <Container fliud className="ps-3 pe-1 ">
         <Row className="g-3 mb-3">
-          <Col lg={3} md={4} sm={6} xs={12} className="p-1">
+          <Col md={4} sm={6} xs={12} className="p-1">
             <div className=" rounded-3 bg-warning text-center px-2 py-3 text-black fw-bold fs-5 h-100 ">
               <Row className=" align-items-center h-100">
                 <Col lg={8} className="px-0">
-                  <div>Male Students</div>
+                  <div>Total Students</div>
                   <h3 className=" text-danger">15080</h3>
                 </Col>
                 <Col lg={4}>
                   <img
-                    src="/img/boy.png"
+                    src="/img/graduation-cap.svg"
                     alt="user"
                     style={{ maxWidth: "50px" }}
                   />
@@ -280,11 +296,11 @@ function Students() {
               </Row>
             </div>
           </Col>
-          <Col lg={3} md={4} sm={6} xs={12} className="p-1">
+          <Col md={4} sm={6} xs={12} className="p-1">
             <div className=" rounded-3 bg-success text-center px-2 py-3 text-light fw-bold fs-5 h-100 ">
               <Row className=" align-items-center h-100">
                 <Col lg={8} className="px-0">
-                  <div>Femal Students</div>
+                  <div>Today Attendance</div>
                   <h3 className=" text-dark ">15080</h3>
                 </Col>
                 <Col lg={4}>
@@ -297,12 +313,12 @@ function Students() {
               </Row>
             </div>
           </Col>
-          <Col lg={3} md={4} sm={6} xs={12} className="p-1">
+          <Col md={4} sm={6} xs={12} className="p-1">
             <div className=" rounded-3 bg-danger text-center px-2 py-3 text-black fw-bold fs-5 h-100 ">
               <Row className=" align-items-center h-100">
                 <Col lg={8} className="px-0">
-                  <div>Male Staffs</div>
-                  <h3 className=" text-light">15080</h3>
+                  <div>Students Reports</div>
+                  <h3 className=" text-light">173</h3>
                 </Col>
                 <Col lg={4}>
                   <img
@@ -314,23 +330,6 @@ function Students() {
               </Row>
             </div>
           </Col>
-          <Col lg={3} md={4} sm={6} xs={12} className="p-1">
-            <div className=" rounded-3 bg-dark text-center px-2 py-3 text-light fw-bold fs-5 h-100 ">
-              <Row className=" align-items-center h-100">
-                <Col lg={8} className="px-0">
-                  <div>Female Staffs</div>
-                  <h3 className=" text-warning">325</h3>
-                </Col>
-                <Col lg={4}>
-                  <img
-                    src="/img/woman.png"
-                    alt="user"
-                    style={{ maxWidth: "50px" }}
-                  />
-                </Col>
-              </Row>
-            </div>
-          </Col>{" "}
         </Row>
       </Container>
 
@@ -343,9 +342,11 @@ function Students() {
               className=" border-0 bg-transparent "
               placeholder="Search"
               onChange={searchUser}
+              style={{ maxWidth: "150px" }}
             />
             <img src="/img/search.png" width={20} alt="" />
           </div>
+          <h3>Student Table</h3>
           <Button
             onClick={handleShow}
             className=" fw-bold mb-2 "
@@ -365,12 +366,14 @@ function Students() {
               className="bg-warning border-0 pt-0 pt-3"
             ></Modal.Header>
             <Modal.Body className=" bg-warning pt-0 rounded-bottom">
-              <h1 style={{ textAlign: "center" }}>{formTitle}</h1>
+              <h1 style={{ textAlign: "center" }}>
+                {userData.id ? "Update user" : "Add user"}
+              </h1>
               <div
                 id="register-container"
                 className=" d-flex bg-warning px-0 pt-0 "
               >
-                {/* <Form noValidate validated={validated} onSubmit={handleSubmit}> */}
+                {/* Form for add and update user data */}
                 <Form onSubmit={handleSubmit}>
                   <div className=" d-grid pt-0 justify-content-center p-3  ">
                     <Row className="p-3 pt-0 d-flex justify-content-between">
@@ -467,7 +470,9 @@ function Students() {
                     </Row>
                   </div>
                   <div className="text-center">
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit">
+                      {userData.id ? "Update" : "Add"}
+                    </Button>
                   </div>
                 </Form>
               </div>
@@ -498,7 +503,9 @@ function Students() {
                 <td>{user.id}</td>
                 <td>{user.userName}</td>
                 <td>
-                  <Badge bg="success">{user.userRole}</Badge>
+                  <Badge bg="success" className=" text-uppercase">
+                    {user.userRole}
+                  </Badge>
                 </td>
                 <td>{user.userMobileNo}</td>
                 <td>{user.userPassword}</td>
@@ -506,9 +513,10 @@ function Students() {
                   <Button
                     variant="primary"
                     className="mb-2 mb-sm-0  me-1"
-                    onClick={editUserData}
+                    onClick={() => editUserData(user)}
                   >
-                    Edit
+                    Edit&nbsp;
+                    <MdEdit />
                   </Button>
                   <Button
                     variant="danger"
