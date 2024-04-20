@@ -409,6 +409,7 @@ function UserManagement() {
               <th>ID</th>
               <th>Name</th>
               <th>Role</th>
+              <th>Mobile</th>
               <th>Password</th>
               <th>Action</th>
             </tr>
@@ -421,11 +422,16 @@ function UserManagement() {
                 <td>
                   <Badge bg="success">{user.userRole}</Badge>
                 </td>
+                <td>{user.userMobileNo}</td>
                 <td>{user.userPassword}</td>
                 <td>
-                  <Button variant="primary" onClick={editUserData}>
+                  <Button
+                    variant="primary"
+                    className="mb-2 mb-sm-0  me-1"
+                    onClick={editUserData}
+                  >
                     Edit
-                  </Button>{" "}
+                  </Button>
                   <Button
                     variant="danger"
                     onClick={() => {

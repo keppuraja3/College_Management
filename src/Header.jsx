@@ -141,7 +141,7 @@ function Header() {
         //   response.data.userMobileNo
         // );
         setCookie("Arts_College_User_Id", response.data.userName, 1);
-        setCookie("Arts_College_User_Role", response.data.userRole1);
+        setCookie("Arts_College_User_Role", response.data.userRole, 1);
         setCookie("Arts_College_User_Email", response.data.userEmail, 1);
         setCookie("Arts_College_User_MobileNo", response.data.userMobileNo, 1);
 
