@@ -7,9 +7,11 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+
 // Components
 import Header from "./Header";
 import Footer from "./Footer";
+
 // Css files
 import "bootstrap/dist/css/bootstrap.css";
 import "./assets/Css/Style.css";
@@ -25,6 +27,7 @@ function Home() {
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
+
   return (
     <>
       {/* Carousel banner on home page  */}
@@ -179,10 +182,11 @@ function Home() {
       </Container>
 
       {/* No of count of students and staffs container  */}
-      <Container className="">
+      <Container className="rounded-3 bg-dark text-light text-center ">
         <Row>
           <Col lg={3} md={4} sm={6} xs={12}>
             <h1>Students</h1>
+            <span>32343</span>
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <h1>Students</h1>

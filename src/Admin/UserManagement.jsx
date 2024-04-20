@@ -8,13 +8,20 @@ import Badge from "react-bootstrap/Badge";
 import { Link, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import RegFormBg from "/img/logo.png";
 import "./AddUser.css";
 
 function UserManagement() {
+  //Page Title---
   document.title = "User Management";
+
+  //Open register form---
+  const handleShow = () => {
+    setShow(true);
+  };
 
   //Close register form--
   const handleClose = () => {
@@ -24,23 +31,14 @@ function UserManagement() {
     setMobileNoError("");
     setRoleError("");
     setPassError("");
-    setUserData({
-      ...userData,
-      userName: "",
-      userEmail: "",
-      userMobileNo: "",
-      userRole: "",
-      userPassword: "",
-    });
+    setUserData({});
+    setPassType("password");
   };
 
-  //Open register form---
-  const handleShow = () => setShow(true);
-
   const navigate = useNavigate();
-  const [isEyeShow, setIsEye] = useState(false);
 
   //password type changing variable--
+  const [isEyeShow, setIsEye] = useState(false);
   const [passType, setPassType] = useState("password");
 
   //User data storing variables--
@@ -65,6 +63,7 @@ function UserManagement() {
       setPassType("password");
     }
   };
+
   //Add user inputed data to the variable-----
   const addUserData = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -130,7 +129,7 @@ function UserManagement() {
 
     //Mobile No validation-------
     if (!userData.userMobileNo == "") {
-      if (userData.userMobileNo.length == 10) {
+      if (userData.userMobileNo.length >= 10) {
         setMobileNoValid(true);
         setMobileNoError("");
       } else {
@@ -182,26 +181,45 @@ function UserManagement() {
       roleValid == true &&
       mobilNoValid == true
     ) {
-      const result = await axios
-        .post("http://localhost:3030/addUser", userData)
-        .then((response) => {
-          return response.data;
-        })
-        .catch((err) => {
-          return err;
-        });
+      if (userData.id) {
+        const result = await axios
+          .post(`http://localhost:3030/updateUserById/${userData.id}`, userData)
+          .then((response) => {
+            return response.data;
+          })
+          .catch((err) => {
+            return err;
+          });
+      } else {
+        const result = await axios
+          .post("http://localhost:3030/addUser", userData)
+          .then((response) => {
+            return response.data;
+          })
+          .catch((err) => {
+            return err;
+          });
+      }
 
       getData();
       handleClose();
+      setUserValid(false);
+      setEmailValid(false);
+      setMobileNoValid(false);
+      setRoleValid(false);
+      setPassValid(false);
     }
   };
 
   //Edit userData function-------
-  const editUserData = () => {};
+  const editUserData = (user) => {
+    setUserData(user);
+    handleShow();
+  };
 
   //delete userData function--------
   const deleteUserData = async (id) => {
-    const isDelete = confirm("Are you sure. You want to delte this data? ");
+    const isDelete = confirm("Are you sure. You want to delete this data? ");
     if (isDelete) {
       const deleteOutput = await axios
         .get(`http://localhost:3030/deleteUserById/${id}`)
@@ -287,12 +305,14 @@ function UserManagement() {
               className="bg-warning border-0 pt-0 pt-3"
             ></Modal.Header>
             <Modal.Body className=" bg-warning pt-0 rounded-bottom">
-              <h1 style={{ textAlign: "center" }}>Add User</h1>
+              <h1 style={{ textAlign: "center" }}>
+                {userData.id ? "Update user" : "Add user"}
+              </h1>
               <div
                 id="register-container"
                 className=" d-flex bg-warning px-0 pt-0 "
               >
-                {/* <Form noValidate validated={validated} onSubmit={handleSubmit}> */}
+                {/* Form for add and update user data */}
                 <Form onSubmit={handleSubmit}>
                   <div className=" d-grid pt-0 justify-content-center p-3  ">
                     <Row className="p-3 pt-0 d-flex justify-content-between">
@@ -389,7 +409,9 @@ function UserManagement() {
                     </Row>
                   </div>
                   <div className="text-center">
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit">
+                      {userData.id ? "Update" : "Add"}
+                    </Button>
                   </div>
                 </Form>
               </div>
@@ -420,7 +442,9 @@ function UserManagement() {
                 <td>{user.id}</td>
                 <td>{user.userName}</td>
                 <td>
-                  <Badge bg="success">{user.userRole}</Badge>
+                  <Badge bg="success" className=" text-uppercase">
+                    {user.userRole}
+                  </Badge>
                 </td>
                 <td>{user.userMobileNo}</td>
                 <td>{user.userPassword}</td>
@@ -428,7 +452,7 @@ function UserManagement() {
                   <Button
                     variant="primary"
                     className="mb-2 mb-sm-0  me-1"
-                    onClick={editUserData}
+                    onClick={() => editUserData(user)}
                   >
                     Edit
                   </Button>

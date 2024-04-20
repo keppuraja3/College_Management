@@ -26,10 +26,13 @@ function Admin() {
           {/* Left Side container  */}
           <Col
             lg={2}
-            className="pe-0 ps-1 d-none d-lg-block m-0 leftSideContainer "
+            className="pe-0 ps-1 d-none d-lg-block m-0 leftSideContainer position-relative  "
           >
             {/* side container content  */}
-            <div style={{ background: "#2b3035" }} className="   p-2 ps-3 ">
+            <div
+              style={{ background: "#2b3035" }}
+              className="h-100 sticky-top p-2 ps-3 "
+            >
               <ul>
                 <Link to={"dashboard"}>
                   <li className="py-2">
