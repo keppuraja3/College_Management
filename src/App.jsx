@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "react-bootstrap/Button";
-import Login from "./Login";
 import Register from "./Admin/Register";
 import ForgetPassword from "./ForgetPassword";
 import About from "./About";
@@ -28,12 +27,13 @@ import Events from "./Admin/Events";
 import UserManagement from "./Admin/UserManagement";
 import Report from "./Admin/Report";
 import PageNotFound from "./Admin/PageNotFound";
+import SearchParam from "./SearchParam";
+import Users from "./Users";
+import User from "./User";
 import "./assets/Css/App.css";
 import "./assets/Css/Home.css";
 import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
-import Users from "./Users";
-import User from "./User";
 function App() {
   return (
     <>
@@ -47,6 +47,7 @@ function App() {
           <Route path="gallery" element={<Gallery />} />
           <Route path="department" element={<Department />} />
           <Route path="about" element={<About />} />
+          <Route path="searchparam" element={<SearchParam />}></Route>
         </Route>
 
         <Route path="/admin" element={<Admin />}>

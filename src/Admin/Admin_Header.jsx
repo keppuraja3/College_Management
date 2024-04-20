@@ -23,16 +23,16 @@ function Admin_Header() {
   const offcanvasHandleClose = () => setOffcanvasShow(false);
   const offcanvasHandleShow = () => setOffcanvasShow(true);
 
-  // useEffect(() => {
-  //   setUserName(window.localStorage.getItem("Arts_College_User_Id"));
-  //   setUserRole(window.localStorage.getItem("Arts_College_User_Role"));
-  //   setUserEmail(window.localStorage.getItem("Arts_College_User_Email"));
-  //   setUserMobileNo(window.localStorage.getItem("Arts_College_User_MobileNo"));
+  useEffect(() => {
+    setUserName(window.localStorage.getItem("Arts_College_User_Id"));
+    setUserRole(window.localStorage.getItem("Arts_College_User_Role"));
+    setUserEmail(window.localStorage.getItem("Arts_College_User_Email"));
+    setUserMobileNo(window.localStorage.getItem("Arts_College_User_MobileNo"));
 
-  //   if (window.localStorage.getItem("Arts_College_User_Id") == "") {
-  //     window.location.href = "http://localhost:5173/";
-  //   }
-  // }, []);
+    if (window.localStorage.getItem("Arts_College_User_Id") == "") {
+      window.location.href = "http://localhost:5173/";
+    }
+  }, []);
 
   const UserLogout = () => {
     window.localStorage.setItem("Arts_College_User_Id", "");
@@ -44,7 +44,11 @@ function Admin_Header() {
 
   //Tooltip for profile
   const [profileShow, setProfileShow] = useState(false);
-  const target = useRef(null);
+  const ProfileTarget = useRef(null);
+
+  //Tooltip for notification
+  const [notificationShow, setnotificationShow] = useState(false);
+  const notificationTarget = useRef(null);
 
   return (
     <>
@@ -77,33 +81,27 @@ function Admin_Header() {
               <span className=" text-warning fw-bold">Arts College</span>
             </Link>
           </Navbar.Brand>{" "}
-          <div className=" text-light text-uppercase">
-            <Badge bg="success" className=" text-light text-uppercase">
-              {userRole}
-              {/* : &nbsp; {userName} */}
-            </Badge>
-          </div>
           <Nav className="ms-auto text-warning text-center mb-0">
             <div className=" d-flex  justify-content-center ">
-              {/* <Nav.Link className="me-sm-2 d-flex align-items-center justify-content-center ">
-                  <img src="/img/search-light.png" alt="user" width={23} />
-                </Nav.Link> */}
-              <Nav.Link className="me-sm-2 d-flex align-items-center justify-content-center ">
-                <img src="/img/notification-light.png" alt="user" width={23} />
-              </Nav.Link>
+              {/* Notification  */}
+              <div className="me-sm-2 d-flex align-items-center justify-content-center ">
+                <img
+                  src="/img/notification-light.png"
+                  ref={notificationTarget}
+                  onClick={() => setnotificationShow(!notificationShow)}
+                  width={23}
+                />
+              </div>
+
+              {/* Profile */}
               <Nav.Link className="me-sm-2">
                 <img
                   src="/img/user_2.png"
                   alt="user"
-                  ref={target}
+                  ref={ProfileTarget}
                   onClick={() => setProfileShow(!profileShow)}
                   width={40}
                 />
-                <div className=" text-light text-uppercase">
-                  <Badge bg="success" className=" text-light text-uppercase">
-                    {userRole}
-                  </Badge>
-                </div>
               </Nav.Link>
             </div>
           </Nav>
@@ -111,7 +109,11 @@ function Admin_Header() {
       </Navbar>
 
       {/* Profile overlay menu  */}
-      <Overlay target={target.current} show={profileShow} placement="bottom">
+      <Overlay
+        target={ProfileTarget.current}
+        show={profileShow}
+        placement="bottom"
+      >
         {(props) => (
           <Tooltip id="overlay-example" {...props}>
             <ul className="profile-container">
@@ -128,9 +130,28 @@ function Admin_Header() {
         )}
       </Overlay>
 
+      {/* Notification overlay menu  */}
+      <Overlay
+        target={notificationTarget.current}
+        show={notificationShow}
+        placement="bottom"
+      >
+        {(props) => (
+          <Tooltip id="overlay-example" {...props}>
+            <ul className="profile-container">
+              <li>New features added</li>
+              <li>new student jioned</li>
+            </ul>
+          </Tooltip>
+        )}
+      </Overlay>
+
       {/* offcanvas for sidebar menus */}
       <Offcanvas show={offcanvasShow} onHide={offcanvasHandleClose}>
-        <Offcanvas.Header className="bg-dark">
+        <Offcanvas.Header
+          className="bg-dark"
+          style={{ backgroundColor: "#2b3035" }}
+        >
           <div className="d-flex justify-content-between w-100 text-light">
             <Offcanvas.Title>Atrs College</Offcanvas.Title>
             <img
@@ -147,7 +168,7 @@ function Admin_Header() {
             <div className=" p-2 ps-3 ">
               <ul>
                 <Link to={"dashboard"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className=" p-2">
                         <img
@@ -161,7 +182,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"students  "}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -175,7 +196,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"professors"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -189,7 +210,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"departments"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -203,7 +224,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"courses"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -217,7 +238,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"events"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -231,7 +252,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"userManagement"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -245,7 +266,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"settings"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -259,7 +280,7 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"report"}>
-                  <li className="py-2">
+                  <li className="py-2" onClick={offcanvasHandleClose}>
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img

@@ -244,7 +244,10 @@ function UserManagement() {
   const searchUser = (e) => {
     const searchText = e.target.value.toLowerCase();
     const filteredUsers = usersData.filter((user) => {
-      if (user.userName.toLowerCase().includes(searchText)) {
+      if (
+        user.userName.toLowerCase().includes(searchText) ||
+        user.userRole.toLowerCase().includes(searchText)
+      ) {
         return user;
       }
     });
@@ -284,7 +287,7 @@ function UserManagement() {
               className="bg-warning border-0 pt-0 pt-3"
             ></Modal.Header>
             <Modal.Body className=" bg-warning pt-0 rounded-bottom">
-              <h1 style={{ textAlign: "cente" }}>Add User</h1>
+              <h1 style={{ textAlign: "center" }}>Add User</h1>
               <div
                 id="register-container"
                 className=" d-flex bg-warning px-0 pt-0 "
@@ -396,7 +399,11 @@ function UserManagement() {
         </div>
 
         {/* User list table */}
-        <Table hover className=" text-center rounded-3  fs-6 shadow-lg">
+        <Table
+          hover
+          responsive
+          className=" text-center rounded-3  fs-6 shadow-lg"
+        >
           <thead>
             <tr>
               <th>ID</th>
@@ -432,6 +439,11 @@ function UserManagement() {
             ))}
           </tbody>
         </Table>
+        {filterUsers.length > 0 ? (
+          <h1></h1>
+        ) : (
+          <h1 className=" text-secondary text-center pt-3">No data found</h1>
+        )}
       </div>
     </>
   );

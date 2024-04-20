@@ -29,7 +29,7 @@ function Admin() {
             className="pe-0 ps-1 d-none d-lg-block m-0 leftSideContainer "
           >
             {/* side container content  */}
-            <div className=" bg-dark  p-2 ps-3 ">
+            <div style={{ background: "#2b3035" }} className="   p-2 ps-3 ">
               <ul>
                 <Link to={"dashboard"}>
                   <li className="py-2">

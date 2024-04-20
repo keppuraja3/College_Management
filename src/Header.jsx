@@ -52,6 +52,14 @@ function Header() {
   // Password type changing variable--
   const [passType, setPassType] = useState("password");
 
+  //Add username and password to cookies---
+  function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
   // Get user data from backend and store into the variable--
   const [loginUserData, setLoginUserData] = useState({});
 
@@ -62,6 +70,8 @@ function Header() {
   // Username and password validation variables---
   const [userValid, setUserValid] = useState(false);
   const [passValid, setPassValid] = useState(false);
+
+  //Username and password error showing variables---
   const [userError, setUserError] = useState("");
   const [passError, setPassError] = useState("");
 
@@ -95,60 +105,54 @@ function Header() {
       setPassError("Plese fill this field");
       setPassValid(false);
     }
+    if (userValid == true && passValid == true) {
+      checkHandle();
+    }
 
     // Check user data to the backend
-
-    if (userValid == true && passValid == true) {
-      //-----Get user data from database-----
-
-      const response = await axios
-        .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
-        .then((res) => {
-          return res;
-        });
-
-      if (response.data.userName == inputedUser.UserName) {
-        if (response.data.userPassword == inputedUser.UserPassword) {
-          window.localStorage.setItem(
-            "Arts_College_User_Id",
-            response.data.userName
-          );
-          window.localStorage.setItem(
-            "Arts_College_User_Role",
-            response.data.userRole
-          );
-          window.localStorage.setItem(
-            "Arts_College_User_Email",
-            response.data.userEmail
-          );
-          window.localStorage.setItem(
-            "Arts_College_User_MobileNo",
-            response.data.userMobileNo
-          );
-          navigate("/admin");
-        } else {
-          setPassError("Password is incorrect!!");
-        }
-      } else {
-        setUserError("Username is wrong!");
-      }
-    }
   };
 
-  // const getData = async (u) => {
-  //   try {
-  //     await axios
-  //       .get(`http://localhost:3030/viewUser/${u}`)
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         console.log(inputedUser);
-  //         setLoginUserData(response.data);
-  //       })
-  //       .catch((err) => console.error(err));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  //Checking login username and password after the validation complete---
+  const checkHandle = async () => {
+    //-----Get user data from database-----
+
+    const response = await axios
+      .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
+      .then((res) => {
+        return res;
+      });
+
+    if (response.data.userName == inputedUser.UserName) {
+      if (response.data.userPassword == inputedUser.UserPassword) {
+        // window.localStorage.setItem(
+        //   "Arts_College_User_Id",
+        //   response.data.userName
+        // );
+        // window.localStorage.setItem(
+        //   "Arts_College_User_Role",
+        //   response.data.userRole
+        // );
+        // window.localStorage.setItem(
+        //   "Arts_College_User_Email",
+        //   response.data.userEmail
+        // );
+        // window.localStorage.setItem(
+        //   "Arts_College_User_MobileNo",
+        //   response.data.userMobileNo
+        // );
+        setCookie("Arts_College_User_Id", response.data.userName, 1);
+        setCookie("Arts_College_User_Role", response.data.userRole1);
+        setCookie("Arts_College_User_Email", response.data.userEmail, 1);
+        setCookie("Arts_College_User_MobileNo", response.data.userMobileNo, 1);
+
+        navigate("/admin");
+      } else {
+        setPassError("Password is incorrect!!");
+      }
+    } else {
+      setUserError("Username is wrong!");
+    }
+  };
 
   return (
     <>
@@ -240,6 +244,7 @@ function Header() {
             type="button"
             className="btn-close mb-4 pb-4 "
             aria-label="Close"
+            onClick={handleClose}
           ></button>
         </Modal.Header>
         <Modal.Body className=" bg-warning rounded-bottom pt-1   ">
