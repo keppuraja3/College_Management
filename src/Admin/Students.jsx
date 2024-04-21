@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaUserGraduate } from "react-icons/fa";
+import { FaUserGraduate, FaEye } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
@@ -297,15 +297,15 @@ function Students() {
             </div>
           </Col>
           <Col md={4} sm={6} xs={12} className="p-1">
-            <div className=" rounded-3 bg-success text-center px-2 py-3 text-light fw-bold fs-5 h-100 ">
+            <div className=" rounded-3 bg-success text-center px-2 py-3 text-dark fw-bold fs-5 h-100 ">
               <Row className=" align-items-center h-100">
                 <Col lg={8} className="px-0">
                   <div>Today Attendance</div>
-                  <h3 className=" text-dark ">15080</h3>
+                  <h3 className=" text-light ">15080</h3>
                 </Col>
                 <Col lg={4}>
                   <img
-                    src="/img/girl.png"
+                    src="/img/attendance-light.png"
                     alt="user"
                     style={{ maxWidth: "50px" }}
                   />
@@ -322,7 +322,7 @@ function Students() {
                 </Col>
                 <Col lg={4}>
                   <img
-                    src="/img/man.png"
+                    src="/img/report-light.png"
                     alt="user"
                     style={{ maxWidth: "50px" }}
                   />
@@ -491,9 +491,9 @@ function Students() {
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Role</th>
+              <th>Reg No</th>
               <th>Mobile</th>
-              <th>Password</th>
+              <th>Email</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -509,22 +509,32 @@ function Students() {
                 </td>
                 <td>{user.userMobileNo}</td>
                 <td>{user.userPassword}</td>
-                <td>
+                <td className=" d-flex justify-content-center align-items-center ">
+                  <Button
+                    variant="info"
+                    className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
+                    onClick={() => viewUserData(user)}
+                  >
+                    <FaEye />
+                    &nbsp;View
+                  </Button>
                   <Button
                     variant="primary"
-                    className="mb-2 mb-sm-0  me-1"
+                    className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
                     onClick={() => editUserData(user)}
                   >
-                    Edit&nbsp;
                     <MdEdit />
+                    &nbsp;Edit
                   </Button>
                   <Button
                     variant="danger"
+                    className="d-flex justify-content-center align-items-center"
                     onClick={() => {
                       deleteUserData(user.id);
                     }}
                   >
-                    Delete
+                    <MdDelete />
+                    &nbsp;Delete
                   </Button>
                 </td>
               </tr>

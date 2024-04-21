@@ -9,7 +9,7 @@
      /* backdrop-filter: blur(5px); */
 }
 
-.notification-container{
+.notification-container,  .notification-img{
     padding: 0.5rem;
     margin: 1rem;
     border-radius: 1rem;
@@ -54,4 +54,10 @@
     overflow: hidden;
     color:inherit;
     background: #000;
+}
+
+
+.notification-img{
+    /* background: url(/public/img/diamond-sunset.svg) no-repeat center; */
+    height: 90%;
 }
