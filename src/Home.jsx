@@ -237,35 +237,24 @@ function Home() {
       </Container>
 
       {/* No of count of students and staffs container  */}
-      <Container className="rounded-3 bg-dark text-light text-center ">
-        <Row>
+      <Container className="rounded-3 bg-dark text-light text-center home-count-container p-3">
+        <Row className="text-uppercase fw-bold">
           <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
-            <h3>32343</h3>
+            {/* <img src="/img/" alt="" srcset="" /> */}
+            <h1 className=" text-warning ">45</h1>
+            <h4>Programs</h4>
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
+            <h1 className=" text-warning ">10500+</h1>
+            <h4>Students</h4>
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
+            <h1 className=" text-warning ">390+</h1>
+            <h4>Faculity Members</h4>
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
-            <h3>32343</h3>
-          </Col>
-          <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
-          </Col>
-          <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
-          </Col>
-          <Col lg={3} md={4} sm={6} xs={12}>
-            <h1>Students</h1>
+            <h1 className=" text-warning ">12</h1>
+            <h4>Department</h4>
           </Col>
         </Row>
       </Container>

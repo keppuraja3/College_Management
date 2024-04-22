@@ -67,3 +67,13 @@ position: absolute;
     /* background: url(/public/img/diamond-sunset.svg) no-repeat center; */
     height: 90%;
 }
+
+.home-count-container{
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(/public/img/college_campus1.jpg) no-repeat center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.home-count-container .col-12:nth-last-child(n+2){
+    border-right: solid rgb(161, 161, 161) 2px;
+}

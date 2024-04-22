@@ -168,8 +168,8 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto text-warning text-center mb-0">
               <Link
-                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
-                  location.pathname === "/" ? "active" : ""
+                className={`m-0 align-items-center p-2 px-3 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/" ? "navLinkActive" : ""
                 }`}
                 to=""
               >
@@ -177,8 +177,8 @@ function Header() {
               </Link>
 
               <Link
-                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
-                  location.pathname === "/course" ? "active" : ""
+                className={`m-0 align-items-center p-2 px-3 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/course" ? "navLinkActive" : ""
                 }`}
                 to="/course"
               >
@@ -186,8 +186,8 @@ function Header() {
               </Link>
 
               <Link
-                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
-                  location.pathname === "/department" ? "active" : ""
+                className={`m-0 align-items-center p-2 px-3 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/department" ? "navLinkActive" : ""
                 }`}
                 to="/department"
               >
@@ -195,8 +195,8 @@ function Header() {
               </Link>
 
               <Link
-                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
-                  location.pathname === "/gallery" ? "active" : ""
+                className={`m-0 align-items-center p-2 px-3 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/gallery" ? "navLinkActive" : ""
                 }`}
                 to="/gallery"
               >
@@ -204,18 +204,18 @@ function Header() {
               </Link>
 
               <Link
-                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center me-2 ${
-                  location.pathname === "/about" ? "active" : ""
+                className={`m-0 align-items-center p-2 px-3 rounded-3 d-flex justify-content-center me-2 ${
+                  location.pathname === "/about" ? "navLinkActive" : ""
                 }`}
                 to="/about"
               >
                 About
               </Link>
 
-              <div className="d-flex justify-content-center ">
+              <div className="d-flex justify-content-center py-1 ">
                 <Button
                   onClick={handleShow}
-                  className=" fw-bold "
+                  className=" fw-bold py-0"
                   variant="outline-warning"
                 >
                   Login
