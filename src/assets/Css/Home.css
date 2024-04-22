@@ -1,11 +1,13 @@
-.banner-text{
+.banner-container{
     position: relative;
 }
-.banner-text{
+.banner-container::before{
+    content: '';
+    height:100%;
+position: absolute;
     width: 100%;
     padding-left: 10px;
-    border-radius: 1rem;
-    background: linear-gradient(90deg ,#00000096,#00000071);
+    background: linear-gradient(180deg ,#00000000,#00000000,#000000);
      /* backdrop-filter: blur(5px); */
 }
 

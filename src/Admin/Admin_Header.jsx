@@ -29,9 +29,9 @@ function Admin_Header() {
     setUserEmail(window.localStorage.getItem("Arts_College_User_Email"));
     setUserMobileNo(window.localStorage.getItem("Arts_College_User_MobileNo"));
 
-    if (window.localStorage.getItem("Arts_College_User_Id") == "") {
-      window.location.href = "http://localhost:5173/";
-    }
+    // if (window.localStorage.getItem("Arts_College_User_Id") == "") {
+    //   window.location.href = "http://localhost:5173/";
+    // }
   }, []);
 
   const UserLogout = () => {
@@ -85,7 +85,10 @@ function Admin_Header() {
                 <img
                   src="/img/notification-light.png"
                   ref={notificationTarget}
-                  onClick={() => setnotificationShow(!notificationShow)}
+                  onClick={() => {
+                    setnotificationShow(!notificationShow);
+                    setProfileShow(false);
+                  }}
                   width={23}
                 />
               </div>
@@ -96,7 +99,10 @@ function Admin_Header() {
                   src="/img/user_2.png"
                   alt="user"
                   ref={ProfileTarget}
-                  onClick={() => setProfileShow(!profileShow)}
+                  onClick={() => {
+                    setProfileShow(!profileShow);
+                    setnotificationShow(false);
+                  }}
                   width={40}
                 />
               </Nav.Link>
@@ -165,7 +171,15 @@ function Admin_Header() {
             <div className=" p-2 ps-3 ">
               <ul>
                 <Link to={"dashboard"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/dashboard" ||
+                      location.pathname === "/admin"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className=" p-2">
                         <img
@@ -179,7 +193,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"students  "}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/students"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -193,7 +214,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"professors"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/professors"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -207,7 +235,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"departments"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/departments"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -221,7 +256,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"courses"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/courses"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -235,7 +277,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"events"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/events"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -249,7 +298,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"userManagement"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/userManagement"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -263,7 +319,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"settings"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/settings"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img
@@ -277,7 +340,14 @@ function Admin_Header() {
                   </li>
                 </Link>
                 <Link to={"report"}>
-                  <li className="py-2" onClick={offcanvasHandleClose}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/report"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                    onClick={offcanvasHandleClose}
+                  >
                     <div className="text-light d-flex align-items-center">
                       <div className="  p-2">
                         <img

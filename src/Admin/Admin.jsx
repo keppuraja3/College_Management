@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+
 import Admin_Header from "./Admin_Header";
 import SideBar from "./SideBar";
 import Dashboard from "./Dashboard";
@@ -18,6 +19,7 @@ import Report from "./Report";
 import PageNotFound from "./PageNotFound";
 import "./Css/Admin.css";
 function Admin() {
+  const location = useLocation();
   return (
     <>
       <Admin_Header />
@@ -29,13 +31,17 @@ function Admin() {
             className="pe-0 ps-1 d-none d-lg-block m-0 leftSideContainer position-relative  "
           >
             {/* side container content  */}
-            <div
-              style={{ background: "#2b3035" }}
-              className="h-100 sticky-top p-2 ps-3 "
-            >
+            <div style={{ background: "#2b3035" }} className="h-100 p-2 ps-3 ">
               <ul>
                 <Link to={"dashboard"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/dashboard" ||
+                      location.pathname === "/admin"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center p-2">
                         <img
@@ -50,8 +56,14 @@ function Admin() {
                     </div>
                   </li>
                 </Link>
-                <Link to={"students  "}>
-                  <li className="py-2">
+                <Link to={"students"}>
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/students"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -67,7 +79,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"professors"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/professors"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -83,7 +101,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"departments"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/departments"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -99,7 +123,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"courses"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/courses"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -115,7 +145,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"events"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/events"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -131,7 +167,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"userManagement"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/userManagement"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -147,7 +189,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"settings"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/settings"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img
@@ -163,7 +211,13 @@ function Admin() {
                   </li>
                 </Link>
                 <Link to={"report"}>
-                  <li className="py-2">
+                  <li
+                    className={`py-2 ${
+                      location.pathname === "/admin/report"
+                        ? "sideContainerActive"
+                        : ""
+                    }`}
+                  >
                     <div className="row">
                       <div className="col-lg-2 d-flex justify-content-center  p-2">
                         <img

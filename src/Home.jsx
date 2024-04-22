@@ -31,54 +31,54 @@ function Home() {
   return (
     <>
       {/* Carousel banner on home page  */}
-      <Carousel className="">
+      <Carousel className=" rounded-bottom-5 s overflow-hidden ">
         {/* slide one */}
-        <Carousel.Item interval={3500}>
+        <Carousel.Item interval={3500} className="banner-container">
           <img
             className="img-fluid w-100"
             src="/img/college_banner4.jpg"
             alt="Image One"
           />
-          <Carousel.Caption className="text-start banner-text d-none d-md-block">
+          <Carousel.Caption className="text-start  d-none d-md-block">
             <h3>Students happy campus life</h3>
             <p>Sample Text for Image One</p>
           </Carousel.Caption>
         </Carousel.Item>
 
         {/* slide two  */}
-        <Carousel.Item interval={3500}>
+        <Carousel.Item interval={3500} className="banner-container">
           <img
             className="img-fluid w-100"
             src="/img/college_banner3.jpg "
             alt="Image Two"
           />
-          <Carousel.Caption className="text-start banner-text d-none d-md-block">
+          <Carousel.Caption className="text-start  d-none d-md-block">
             <h3>Label for second slide</h3>
             <p>Sample Text for Image Two</p>
           </Carousel.Caption>
         </Carousel.Item>
 
         {/* slide three  */}
-        <Carousel.Item interval={3500}>
+        <Carousel.Item interval={3500} className="banner-container">
           <img
             className="img-fluid w-100"
             src="/img/college_banner2.jpg "
             alt="Image Three"
           />
-          <Carousel.Caption className="text-start banner-text d-none d-md-block">
+          <Carousel.Caption className="text-start  d-none d-md-block">
             <h3>Label for second slide</h3>
             <p>Sample Text for Image Two</p>
           </Carousel.Caption>
         </Carousel.Item>
 
         {/* slide four */}
-        <Carousel.Item interval={3500}>
+        <Carousel.Item interval={3500} className="banner-container">
           <img
             className="img-fluid w-100"
             src="/img/college_banner1.jpg "
             alt="Image Four"
           />
-          <Carousel.Caption className="text-start banner-text d-none d-md-block">
+          <Carousel.Caption className="text-start  d-none d-md-block">
             <h3>Label for second slide</h3>
             <p>Sample Text for Image Two</p>
           </Carousel.Caption>
@@ -86,7 +86,7 @@ function Home() {
       </Carousel>
 
       {/* Notification container */}
-      <Container className="  ">
+      <Container>
         <Row className="gy-3 overflow-hidden">
           <Col md={3} className="pe-0">
             <div className=" bg-warning rounded-3 notification-img p-2 my-3 text-light rounded-3 mx-0">
@@ -136,6 +136,7 @@ function Home() {
                     </li>
                   </ul>
                 </Tab>
+
                 <Tab eventKey="results" title="Results">
                   <ul>
                     <li>
@@ -180,6 +181,7 @@ function Home() {
                     </li>
                   </ul>
                 </Tab>
+
                 <Tab eventKey="events" title="Events">
                   <ul>
                     <li>

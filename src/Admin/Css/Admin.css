@@ -21,12 +21,17 @@ body {
 }
 
 .leftSideContainer{
-  height: 100vh;
+  min-height: 100vh;
   width: max-content;
 }
 
-.leftSideContainer ul li:hover, .active {
+.leftSideContainer ul li:hover {
   background: #80898d9f;
+}
+
+.sideContainerActive{
+  background: #80898d9f;
+  border-radius: 0.5rem;
 }
 
 .searchBox{

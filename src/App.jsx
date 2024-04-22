@@ -85,14 +85,6 @@ function App() {
           <Route path="report" element={<Report />} />
         </Route>
       </Routes>
-      {/* <div
-        id="main-container"
-        className=" d-flex justify-content-center align-items-center w-100 position-relative "
-      >
-        <div id="main-inner-container" className="mt-3 rounded-3">
-          <Form_Validation />
-        </div>
-      </div> */}
     </>
   );
 }
