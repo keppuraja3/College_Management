@@ -94,6 +94,42 @@ function Gallery() {
               style={{ width: "100%" }}
               className="rounded-3 overflow-hidden  border border-2 border-black h-100"
             >
+              <Card.Img variant="top" src="img/college_students1.jpg" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col
+            lg={3}
+            md={4}
+            sm={6}
+            xs={12}
+            style={{ maxHeight: "210px" }}
+            className=" "
+          >
+            <Card
+              style={{ width: "100%" }}
+              className="rounded-3 overflow-hidden  border border-2 border-black h-100"
+            >
+              <Card.Img variant="top" src="img/college_students1.jpg" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col
+            lg={3}
+            md={4}
+            sm={6}
+            xs={12}
+            style={{ maxHeight: "210px" }}
+            className=" "
+          >
+            <Card
+              style={{ width: "100%" }}
+              className="rounded-3 overflow-hidden  border border-2 border-black h-100"
+            >
               <Card.Img variant="top" src="img/college_campus1.jpg" />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
