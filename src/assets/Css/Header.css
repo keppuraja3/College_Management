@@ -3,8 +3,8 @@
   color: rgb(253, 253, 0) !important;
 }
 
-
-#basic-navbar-nav .navbar-nav a{
+/* hover bottom bar css----  */
+/* #basic-navbar-nav .navbar-nav a{
   position: relative;
 }
 
@@ -20,8 +20,10 @@
   transition: all .4s;
 }
 
-#basic-navbar-nav .navbar-nav a:hover::before{
-  width: 100%;
-}
+@media screen and (min-width: 992px) {
+  #basic-navbar-nav .navbar-nav a:hover::before{
+    width: 100%;
+  }
+} */
 
 

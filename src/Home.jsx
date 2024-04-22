@@ -86,10 +86,10 @@ function Home() {
       </Carousel>
 
       {/* Notification container */}
-      <Container fluid className=" overflow-hidden ">
-        <Row className="gy-3">
+      <Container className="  ">
+        <Row className="gy-3 overflow-hidden">
           <Col md={3} className="pe-0">
-            <div className=" bg-warning rounded-3 notification-img p-2 my-3 text-light rounded-3">
+            <div className=" bg-warning rounded-3 notification-img p-2 my-3 text-light rounded-3 mx-0">
               <div className=" bg-dark h-100  rounded-3 p-3">
                 <h4 className=" text-uppercase text-center  ">
                   Important Notifications
@@ -97,9 +97,8 @@ function Home() {
                 <p>
                   Tommorow our college annual day. So every students come to
                   college without any leave. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Ipsa ipsum odit nihil,
-                  temporibus unde ullam animi quam minus suscipit dkkddkd, quia
-                  magni vitae!
+                  consectetur adipisicing elit. Ipsa ipsum odit nihil, tempo
+                  animi quam minus suscipit dkkddkd, quia magni vitae!
                 </p>
               </div>
             </div>
@@ -108,11 +107,36 @@ function Home() {
             {/* Result and evets notification content */}
             <div className="notification-container bg-warning">
               <Tabs
-                defaultActiveKey="profile"
+                justify
+                defaultActiveKey="all"
                 id="justify-tab-example"
                 className="mb-1 bg-dark rounded"
               >
-                <Tab eventKey="resutls" title="Results">
+                <Tab eventKey="all" title="All">
+                  <ul>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                  </ul>
+                </Tab>
+                <Tab eventKey="results" title="Results">
                   <ul>
                     <li>
                       B.com(CA) 2024-May 5th sem result{" "}
@@ -157,6 +181,30 @@ function Home() {
                   </ul>
                 </Tab>
                 <Tab eventKey="events" title="Events">
+                  <ul>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                    <li>
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
+                    </li>
+                  </ul>
+                </Tab>
+                <Tab eventKey="function" title="Function">
                   <ul>
                     <li>
                       April 27 college annual day function{" "}

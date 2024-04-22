@@ -35,10 +35,7 @@ function Admin_Header() {
   }, []);
 
   const UserLogout = () => {
-    window.localStorage.setItem("Arts_College_User_Id", "");
-    window.localStorage.setItem("Arts_College_User_Role", "");
-    window.localStorage.setItem("Arts_College_User_Email", "");
-    window.localStorage.setItem("Arts_College_User_MobileNo", "");
+    localStorage.clear();
     navigate("/");
   };
 

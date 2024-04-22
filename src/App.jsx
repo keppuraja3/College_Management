@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -35,8 +35,29 @@ import "./assets/Css/Home.css";
 import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
 function App() {
+  const [screenLoading, setScreenLoading] = useState(false);
+
+  // window.addEventListener("load", preLoader);
+  useEffect(() => {
+    setScreenLoading(true);
+    setTimeout(() => {
+      setScreenLoading(false);
+    }, 1000);
+  }, []);
   return (
     <>
+      {screenLoading ? (
+        <div id="pre-loader-container">
+          <img
+            id="pre-loader-img"
+            src="/img/loading-infinity.gif"
+            alt="Loading...."
+            className=" rounded-circle"
+          />
+        </div>
+      ) : (
+        <div></div>
+      )}
       <Routes>
         <Route path="/users" element={<Users />}></Route>
         <Route path="/users/user/:id" element={<User />}></Route>
@@ -64,14 +85,14 @@ function App() {
           <Route path="report" element={<Report />} />
         </Route>
       </Routes>
-      <div
+      {/* <div
         id="main-container"
         className=" d-flex justify-content-center align-items-center w-100 position-relative "
       >
         <div id="main-inner-container" className="mt-3 rounded-3">
-          {/* <Form_Validation /> */}
+          <Form_Validation />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

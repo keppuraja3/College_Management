@@ -5,7 +5,7 @@ import axios from "axios";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
@@ -15,6 +15,7 @@ import "./assets/Css/Header.css";
 function Header() {
   //create a navigation variable--
   const navigate = useNavigate();
+  const location = useLocation();
 
   //Login form model show and hide codes--
   const [show, setShow] = useState(false);
@@ -38,12 +39,12 @@ function Header() {
 
   const ChangePassVisible = (event) => {
     if (isEyeShow === false) {
-      event.target.src = "/img/closed-eyes-dark.png";
+      event.target.src = "/img/eye.svg";
       event.target.width = "20";
       setIsEye(true);
       setPassType("text");
     } else {
-      event.target.src = "/img/eye.svg";
+      event.target.src = "/img/closed-eyes-dark.png";
       setIsEye(false);
       setPassType("password");
     }
@@ -124,22 +125,6 @@ function Header() {
 
     if (response.data.userName == inputedUser.UserName) {
       if (response.data.userPassword == inputedUser.UserPassword) {
-        // window.localStorage.setItem(
-        //   "Arts_College_User_Id",
-        //   response.data.userName
-        // );
-        // window.localStorage.setItem(
-        //   "Arts_College_User_Role",
-        //   response.data.userRole
-        // );
-        // window.localStorage.setItem(
-        //   "Arts_College_User_Email",
-        //   response.data.userEmail
-        // );
-        // window.localStorage.setItem(
-        //   "Arts_College_User_MobileNo",
-        //   response.data.userMobileNo
-        // );
         setCookie("Arts_College_User_Id", response.data.userName, 1);
         setCookie("Arts_College_User_Role", response.data.userRole, 1);
         setCookie("Arts_College_User_Email", response.data.userEmail, 1);
@@ -183,41 +168,51 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto text-warning text-center mb-0">
               <Link
-                className=" m-1 align-items-center d-flex justify-content-center "
+                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
                 to=""
               >
                 Home
               </Link>
 
               <Link
-                className=" m-1 align-items-center d-flex justify-content-center "
+                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/course" ? "active" : ""
+                }`}
                 to="/course"
               >
                 Course
               </Link>
 
               <Link
-                className=" m-1 align-items-center d-flex justify-content-center "
+                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/department" ? "active" : ""
+                }`}
                 to="/department"
               >
                 Department
               </Link>
 
               <Link
-                className=" m-1 align-items-center d-flex justify-content-center "
+                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center ${
+                  location.pathname === "/gallery" ? "active" : ""
+                }`}
                 to="/gallery"
               >
                 Gallery
               </Link>
 
               <Link
-                className=" m-1 align-items-center d-flex justify-content-center me-2 "
+                className={`m-1 align-items-center p-2 rounded-3 d-flex justify-content-center me-2 ${
+                  location.pathname === "/about" ? "active" : ""
+                }`}
                 to="/about"
               >
                 About
               </Link>
 
-              <div className=" d-flex justify-content-center ">
+              <div className="d-flex justify-content-center ">
                 <Button
                   onClick={handleShow}
                   className=" fw-bold "
@@ -275,7 +270,7 @@ function Header() {
                       id="uPass"
                     />
                     <img
-                      src="/img/eye.svg"
+                      src="/img/closed-eyes-dark.png"
                       alt="eye"
                       className=" me-1 py-2"
                       width={20}

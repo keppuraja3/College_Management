@@ -31,3 +31,26 @@ input::-webkit-inner-spin-button {
   background: url(/img/college_2.jpg) no-repeat;
   background-size: contain;
 } */
+
+#pre-loader-container{
+  width: 100vw;
+  height: 100vh;
+  background:#0000008e;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+}
+#pre-loader-img{
+  animation: loading 2s infinite;
+}
+@keyframes loading{
+  0%,100%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.3);
+
+  }
+}

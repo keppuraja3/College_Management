@@ -17,7 +17,7 @@ function SearchParam() {
         active
       </Button>
       &nbsp;
-      <Button variant="warning" onClick={() => setSearchParam({ filter: "" })}>
+      <Button variant="warning" onClick={() => setSearchParam({})}>
         Reset
       </Button>
       {isActive ? <h1>This is active</h1> : <h1>Not active</h1>}
