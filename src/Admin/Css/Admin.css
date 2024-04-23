@@ -33,7 +33,14 @@ body {
   background: #80898d9f;
   border-radius: 0.5rem;
 }
+.passwordControl input:focus {
+  outline: none;
+  box-shadow: none;
+}
 
+.passwordControl img {
+  cursor: pointer;
+}
 .searchBox{
   box-shadow: 0 0 5px black;
 }

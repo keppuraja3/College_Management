@@ -6,18 +6,17 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 import Admin_Header from "./Admin_Header";
-import SideBar from "./SideBar";
-import Dashboard from "./Dashboard";
-import Students from "./Students";
-import Professors from "./Professors";
-import Department from "./Department";
-import Courses from "./Courses";
-import Settings from "./Settings";
-import Events from "./Events";
-import UserManagement from "./UserManagement";
-import Report from "./Report";
-import PageNotFound from "./PageNotFound";
-import "./Css/Admin.css";
+// import SideBar from "./SideBar";
+// import Dashboard from "./Dashboard";
+// import Students from "./Students";
+// import Professors from "./Professors";
+// import Department from "./Department";
+// import Courses from "./Courses";
+// import Settings from "./Settings";
+// import Events from "./Events";
+// import UserManagement from "./UserManagement";
+// import Report from "./Report";
+// import PageNotFound from "./PageNotFound";
 function Admin() {
   const location = useLocation();
   return (
@@ -31,7 +30,7 @@ function Admin() {
             className="pe-0 ps-1 d-none d-lg-block m-0 leftSideContainer position-relative  "
           >
             {/* side container content  */}
-            <div style={{ background: "#2b3035" }} className="h-100 p-2 ps-3 ">
+            <div style={{ background: "#2b3035" }} className="h-100 p-2 ">
               <ul>
                 <Link to={"dashboard"}>
                   <li

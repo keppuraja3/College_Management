@@ -34,6 +34,7 @@ import "./assets/Css/App.css";
 import "./assets/Css/Home.css";
 import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
+import DepartmentDetails from "./DepartmentDetails";
 function App() {
   const [screenLoading, setScreenLoading] = useState(false);
 
@@ -67,6 +68,7 @@ function App() {
           <Route path="course" element={<Course />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="department" element={<Department />} />
+          <Route path="departmentDetails" element={<DepartmentDetails />} />
           <Route path="about" element={<About />} />
           <Route path="searchparam" element={<SearchParam />}></Route>
         </Route>

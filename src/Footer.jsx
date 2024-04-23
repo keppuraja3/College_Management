@@ -50,21 +50,21 @@ function Footer() {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <ul className=" d-grid align-items-center h-100 pb-3  pb-md-1 pb-md-1">
-              <li className=" text-warning ">Quick Links</li>
+              <li className=" text-warning ">Social Media</li>
               <Link className=" text-light" to={"/"}>
-                Home
+                Youtube
               </Link>
               <Link className=" text-light" to={"/course"}>
-                Course
+                Facebook
               </Link>
               <Link className=" text-light" to={"/departments"}>
-                Departments
+                Twitter
               </Link>
               <Link className=" text-light" to={"/gallery"}>
-                Gallery
+                Youtube
               </Link>
               <Link className=" text-light" to={"/about"}>
-                About
+                Twitter
               </Link>
             </ul>
           </Col>

@@ -1,13 +1,13 @@
 import Container from "react-bootstrap/Container";
 import React from "react";
-
+import Footer from "./Footer";
 function About() {
   document.title = "About";
 
   return (
     <>
       <Container className="p-2 mt-2 ">
-        <h1 className="text-uppercase fw-bold ">About</h1>
+        <h1 className=" text-uppercase fw-bold ">About</h1>
         <ul className=" about-container rounded-3 p-3 overflow-hidden ">
           <li className=" mb-3">
             <h3 className="text-center text-uppercase text-warning ">
@@ -109,6 +109,7 @@ function About() {
           </li>
         </ul>
       </Container>
+      <Footer />
     </>
   );
 }

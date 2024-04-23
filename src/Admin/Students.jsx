@@ -15,7 +15,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import RegFormBg from "/img/logo.png";
-import "./AddUser.css";
 
 function Students() {
   //Page Title---
@@ -334,6 +333,8 @@ function Students() {
       </Container>
 
       <div className=" container-fluid">
+        <h3 className=" text-center text-uppercase ">Student Table</h3>
+
         <div className=" d-flex  justify-content-between  ">
           {/* add user button */}
           <div className="p-2 bg-light rounded-2 user-select-none searchBox mb-2 ">
@@ -346,7 +347,6 @@ function Students() {
             />
             <img src="/img/search.png" width={20} alt="" />
           </div>
-          <h3>Student Table</h3>
           <Button
             onClick={handleShow}
             className=" fw-bold mb-2 "

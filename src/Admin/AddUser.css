@@ -1,8 +1,0 @@
-.passwordControl input:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.passwordControl img {
-  cursor: pointer;
-}

@@ -5,16 +5,13 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Register from "./Register";
 import Badge from "react-bootstrap/Badge";
 import { Link, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import RegFormBg from "/img/logo.png";
-import "./AddUser.css";
 
 function UserManagement() {
   //Page Title---
@@ -277,6 +274,8 @@ function UserManagement() {
   return (
     <>
       <div className=" container-fluid">
+        <h3 className=" text-center text-uppercase ">User Table</h3>
+
         <div className=" d-flex  justify-content-between  ">
           {/* add user button */}
           <div className="p-2 bg-light rounded-2 user-select-none searchBox mb-2 ">
@@ -289,7 +288,6 @@ function UserManagement() {
             />
             <img src="/img/search.png" width={20} alt="" />
           </div>
-          <h3>User Table</h3>
           <Button
             onClick={handleShow}
             className=" fw-bold mb-2 "

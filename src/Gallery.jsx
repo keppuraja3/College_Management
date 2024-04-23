@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Footer from "./Footer";
 function Gallery() {
   document.title = "Gallery";
 
@@ -194,6 +195,7 @@ function Gallery() {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 }
