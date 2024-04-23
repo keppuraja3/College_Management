@@ -54,3 +54,7 @@ input::-webkit-inner-spin-button {
 
   }
 }
+
+.footer-container{
+  list-style: none
+}

@@ -1,26 +1,16 @@
-#navContianer {
-  color: #131331;
-}
-
-#FooterContainer {
-  position: absolute;
-  bottom: 0;
-  background: #131331;
-  color: #ffffff;
-  width: 100%;
-  text-align: center;
-  padding: 0.5rem;
-}
-#FooterNav {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+#FooterContainer{
+position: relative;
 }
 #FooterContainer ul {
   list-style: none;
+  text-align: center;
 }
 
-#FooterContainer ul li a {
-  color: yellowgreen;
-  text-decoration: none;
+.about-container{
+  background: linear-gradient(45deg, #0000008a,#0000008a), url(/img/college-classroom1.jpg) no-repeat fixed center;
+  background-size: cover;
+  /* background: url(/public/img/college_banner1.jpg); */
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  list-style: none;
 }

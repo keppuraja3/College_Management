@@ -6,11 +6,13 @@ function About() {
 
   return (
     <>
-      <h1 className="text-center text-uppercase">About</h1>
       <Container className="p-2 mt-2 ">
-        <h3>ABOUT THE INSTITUTION</h3>
-        <ul>
-          <li>
+        <h1 className="text-uppercase fw-bold ">About</h1>
+        <ul className=" about-container rounded-3 p-3 overflow-hidden ">
+          <li className=" mb-3">
+            <h3 className="text-center text-uppercase text-warning ">
+              History
+            </h3>
             The School of Art, the oldest of the Institution was founded at
             Madras in 1850 by Dr. ALEXANDER HUNTER, M.D., F.R.S.C.E., an eminent
             surgeon in the British Military Service. The school aimed to
@@ -21,7 +23,7 @@ function About() {
             Only in the 1870s, the school headquarters was moved to the present
             location in Poonamallee High Road.
           </li>
-          <li>
+          <li className=" mb-3">
             The school was taken over by the Department of Public Instruction in
             1852. In consultation with the East India House and the Royal
             Academy in London, Dr. HUNTER set up an eight-member committee to
@@ -43,7 +45,8 @@ function About() {
             historical record of that time period's art production as well as
             museum collecting practices.
           </li>
-          <li>
+          <li className=" mb-3">
+            <h3 className="text-center text-uppercase text-warning ">Campus</h3>
             In its sixteenth year in 1868, the Government of Industrial Arts had
             taught about 3500 students out of whom about 2000 were placed in
             India, Canada, Australia, England and the Andaman and Nicobar
@@ -52,7 +55,8 @@ function About() {
             in setting up art schools in Lucknow, Roorkee, Surat, Pune, Agra,
             Lahore and Assam.
           </li>
-          <li>
+          <li className=" mb-3">
+            <h3 className="text-center text-uppercase text-warning ">Course</h3>
             Government School of Industrial Arts had two more British
             Superintendents R.F.CHISOLM and W.S.HADAWAY, but it was E.B.HAVELL,
             a British art teacher and critic, who arrived in India in 1884 as
@@ -89,7 +93,10 @@ function About() {
             College of Fine Arts became affiliated to Tamil Nadu Dr.J
             Jayalaithaa Music and Fine Arts University.
           </li>
-          <li>
+          <li className=" mb-3">
+            <h3 className="text-center text-uppercase text-warning ">
+              Faculity
+            </h3>
             With the dedicated effort from Department of Art and Culture,
             Faculty, Staff and Students both past and present, the college today
             boasts with an exalted status of academic distinction, nationally

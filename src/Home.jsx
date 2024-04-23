@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Container from "react-bootstrap/esm/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 
 // Components
-import Header from "./Header";
 import Footer from "./Footer";
 
 // Css files
@@ -86,26 +85,45 @@ function Home() {
       </Carousel>
 
       {/* Notification container */}
-      <Container>
-        <Row className="gy-3 overflow-hidden">
-          <Col md={3} className="pe-0">
-            <div className=" bg-warning rounded-3 notification-img p-2 my-3 text-light rounded-3 mx-0">
-              <div className=" bg-dark h-100  rounded-3 p-3">
+      <Container className="pb-3 ">
+        <Row className="gy-3">
+          <Col lg={3} className="">
+            <div
+              className=" bg-warning rounded-3 notification-img p-2 my-3 text-light overflow-hidden  rounded-3 mx-0"
+              style={{ maxHeight: "350px" }}
+            >
+              <div
+                className=" bg-dark rounded-3 p-3 overflow-scroll "
+                style={{ maxHeight: "325px" }}
+              >
                 <h4 className=" text-uppercase text-center  ">
-                  Important Notifications
+                  Important Notice
                 </h4>
                 <p>
                   Tommorow our college annual day. So every students come to
                   college without any leave. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Ipsa ipommorow our college
+                  annual day. So every students come to college without any
+                  leave. Lorem ipsum dolor sit amet ipisicing elit. Ipsa
+                  ipommorow our college annual day. So every students come to
+                  college without any leave. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Ipsa ipommorow our college
+                  annual day. So every students come to college without any
+                  leave. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Ipsa ipommorow our college annual day. So every students
+                  come to college without any leave. Lorem ipsum dolor sit amet
                   consectetur adipisicing elit. Ipsa ipsum odit nihil, tempo
                   animi quam minus suscipit dkkddkd, quia magni vitae!
                 </p>
               </div>
             </div>
           </Col>
-          <Col md={9} className="px-0">
+          <Col lg={9} className="px-0">
             {/* Result and evets notification content */}
-            <div className="notification-container bg-warning">
+            <div
+              className="notification-container bg-warning rounded-bottom-3"
+              style={{ maxHeight: "350px" }}
+            >
               <Tabs
                 justify
                 defaultActiveKey="all"
@@ -113,71 +131,77 @@ function Home() {
                 className="mb-1 bg-dark rounded"
               >
                 <Tab eventKey="all" title="All">
-                  <ul>
+                  <ul style={{ maxHeight: "255px" }}>
+                    {/* <marquee
+                      direction="up"
+                      scrollamount="100"
+                      behavior="alternate"
+                    > */}
                     <li>
-                      April 27 college annual day function{" "}
-                      <a href="#">view details</a>{" "}
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
                     </li>
                     <li>
-                      April 27 college annual day function{" "}
-                      <a href="#">view details</a>{" "}
+                      B.A Tamil 2024-April 2nd sem result{" "}
+                      <a href="#">Click here</a>{" "}
                     </li>
                     <li>
-                      April 27 college annual day function{" "}
-                      <a href="#">view details</a>{" "}
+                      B.A English 2023-Nov 4th sem result{" "}
+                      <a href="#">Click here</a>{" "}
                     </li>
                     <li>
-                      April 27 college annual day function{" "}
-                      <a href="#">view details</a>{" "}
+                      B.A Math 2024-Nov 1st sem result{" "}
+                      <a href="#">Click here</a>{" "}
                     </li>
                     <li>
-                      April 27 college annual day function{" "}
-                      <a href="#">view details</a>{" "}
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
                     </li>
+                    <li>
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A Tamil 2024-April 2nd sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A English 2023-Nov 4th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.A Math 2024-Nov 1st sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    <li>
+                      B.com(CA) 2024-May 5th sem result{" "}
+                      <a href="#">Click here</a>{" "}
+                    </li>
+                    {/* </marquee> */}
                   </ul>
                 </Tab>
 
                 <Tab eventKey="results" title="Results">
                   <ul>
                     <li>
-                      B.com(CA) 2024-May 5th sem result{" "}
-                      <a href="#">Click here</a>{" "}
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
                     </li>
                     <li>
-                      B.A Tamil 2024-April 2nd sem result{" "}
-                      <a href="#">Click here</a>{" "}
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
                     </li>
                     <li>
-                      B.A English 2023-Nov 4th sem result{" "}
-                      <a href="#">Click here</a>{" "}
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
                     </li>
                     <li>
-                      B.A Math 2024-Nov 1st sem result{" "}
-                      <a href="#">Click here</a>{" "}
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
                     </li>
                     <li>
-                      B.com(CA) 2024-May 5th sem result{" "}
-                      <a href="#">Click here</a>{" "}
-                    </li>
-                    <li>
-                      B.com(CA) 2024-May 5th sem result{" "}
-                      <a href="#">Click here</a>{" "}
-                    </li>
-                    <li>
-                      B.A Tamil 2024-April 2nd sem result{" "}
-                      <a href="#">Click here</a>{" "}
-                    </li>
-                    <li>
-                      B.A English 2023-Nov 4th sem result{" "}
-                      <a href="#">Click here</a>{" "}
-                    </li>
-                    <li>
-                      B.A Math 2024-Nov 1st sem result{" "}
-                      <a href="#">Click here</a>{" "}
-                    </li>
-                    <li>
-                      B.com(CA) 2024-May 5th sem result{" "}
-                      <a href="#">Click here</a>{" "}
+                      April 27 college annual day function{" "}
+                      <a href="#">view details</a>{" "}
                     </li>
                   </ul>
                 </Tab>
@@ -206,6 +230,7 @@ function Home() {
                     </li>
                   </ul>
                 </Tab>
+
                 <Tab eventKey="function" title="Function">
                   <ul>
                     <li>
@@ -237,8 +262,8 @@ function Home() {
       </Container>
 
       {/* No of count of students and staffs container  */}
-      <Container className="rounded-3 bg-dark text-light text-center home-count-container p-3">
-        <Row className="text-uppercase fw-bold">
+      <Container className=" p-4">
+        <Row className="text-uppercase fw-bold gy-4 rounded-3 bg-dark text-light text-center home-count-container pb-3">
           <Col lg={3} md={4} sm={6} xs={12}>
             {/* <img src="/img/" alt="" srcset="" /> */}
             <h1 className=" text-warning ">45</h1>
@@ -260,7 +285,7 @@ function Home() {
       </Container>
       <Container className="p-2 mt-2 ">
         <h3>ABOUT THE INSTITUTION</h3>
-        <ul>
+        <ul className=" text">
           <li>
             The School of Art, the oldest of the Institution was founded at
             Madras in 1850 by Dr. ALEXANDER HUNTER, M.D., F.R.S.C.E., an eminent
@@ -353,6 +378,7 @@ function Home() {
           </li>
         </ul>
       </Container>
+      <Footer />
     </>
   );
 }

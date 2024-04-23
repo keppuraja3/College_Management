@@ -19,6 +19,7 @@ position: absolute;
     /* max-height: 350px; */
     box-shadow: 0 0 10px rgb(0, 0, 0);
 }
+
 .notification-container h3{
     text-align: center;
     color: #ffffff;
@@ -27,16 +28,20 @@ position: absolute;
 .notification-container  ul{
     padding: 5px 2px 5px 15px ;
     margin: 0px;
-    overflow: scroll;
-    overflow-x: hidden;
-    max-height: 230px;
     border-radius: .5rem;
     list-style: none;
     background: rgb(33, 37, 41);
     transition: all .4s;
 }
+.notification-container div div ul{
+    overflow: scroll;
+    /* height: 100%; */
+}
 
-.notification-container  ul::-webkit-scrollbar{
+.notification-container  ul::-webkit-scrollbar,.notification-container  ul::-webkit-scrollbar-corner{
+    appearance: none;
+}
+.notification-img  div::-webkit-scrollbar,.notification-img  div::-webkit-scrollbar-corner{
     appearance: none;
 }
 
@@ -45,6 +50,7 @@ position: absolute;
     padding: 10px;
     border-radius: .5rem;
 }
+
 .notification-container ul li:hover{
     background: #91909093;
 
@@ -62,18 +68,40 @@ position: absolute;
     background: #000;
 }
 
-
 .notification-img{
     /* background: url(/public/img/diamond-sunset.svg) no-repeat center; */
     height: 90%;
 }
 
 .home-count-container{
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(/public/img/college_campus1.jpg) no-repeat center fixed;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(img/college_campus1.jpg) no-repeat center fixed;
     background-size: cover;
     overflow: hidden;
 }
 
-.home-count-container .col-12:nth-last-child(n+2){
-    border-right: solid rgb(161, 161, 161) 2px;
+.home-count-container .col-12{
+    position: relative;
+}
+
+.home-count-container .col-12:nth-last-child(n+2)::before{
+    /* border-bottom: solid rgb(161, 161, 161) 2px; */
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background: #7a7a7a;
+    bottom: 0;
+    transform: translate(-50%,-50%);
+}
+
+@media screen and (min-width: 760px) {
+    .home-count-container .col-12:nth-last-child(n+2)::before{
+        /* border-bottom: solid rgb(161, 161, 161) 2px; */
+        content: '';
+        position: absolute;
+        height: 50%;
+        width: 2px;
+        background: #7a7a7a;
+        right: 0;
+    }  
 }
