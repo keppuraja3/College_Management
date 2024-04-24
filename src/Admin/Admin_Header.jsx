@@ -24,12 +24,12 @@ function Admin_Header() {
   const offcanvasHandleShow = () => setOffcanvasShow(true);
 
   useEffect(() => {
-    setUserName(window.localStorage.getItem("Arts_College_User_Id"));
-    setUserRole(window.localStorage.getItem("Arts_College_User_Role"));
-    setUserEmail(window.localStorage.getItem("Arts_College_User_Email"));
-    setUserMobileNo(window.localStorage.getItem("Arts_College_User_MobileNo"));
+    setUserName(localStorage.getItem("Arts_College_User_Id"));
+    setUserRole(localStorage.getItem("Arts_College_User_Role"));
+    setUserEmail(localStorage.getItem("Arts_College_User_Email"));
+    setUserMobileNo(localStorage.getItem("Arts_College_User_MobileNo"));
 
-    // if (window.localStorage.getItem("Arts_College_User_Id") == "") {
+    // if (localStorage.getItem(!"Arts_College_User_Role") == "admin") {
     //   window.location.href = "http://localhost:5173/";
     // }
   }, []);

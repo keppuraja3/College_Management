@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
 import axios from "axios";
@@ -53,16 +53,14 @@ function Header() {
   // Password type changing variable--
   const [passType, setPassType] = useState("password");
 
-  //Add username and password to cookies---
-  function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  //Add username and password to LocalStorage---
+  function setLocal(cname, cvalue) {
+    localStorage.setItem(`"${cname}"`, `"${cvalue}"`);
+    console.log(`"${cname}"`, `"${cvalue}"`);
   }
 
   // Get user data from backend and store into the variable--
-  const [loginUserData, setLoginUserData] = useState({});
+  // const [loginUserData, setLoginUserData] = useState({});
 
   const loginInput = (e) => {
     setInputedUser({ ...inputedUser, [e.target.name]: e.target.value });
@@ -71,6 +69,29 @@ function Header() {
   // Username and password validation variables---
   const [userValid, setUserValid] = useState(false);
   const [passValid, setPassValid] = useState(false);
+
+  useEffect(async () => {
+    if (userValid === true && passValid === true) {
+      await axios
+        .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
+        .then((res) => {
+          if (res.data.userName == inputedUser.UserName) {
+            if (res.data.userPassword == inputedUser.UserPassword) {
+              setLocal("Arts_College_User_Id", res.data.userName);
+              setLocal("Arts_College_User_Role", res.data.userRole);
+              setLocal("Arts_College_User_Email", res.data.userEmail);
+              setLocal("Arts_College_User_MobileNo", res.data.userMobileNo);
+
+              navigate("/admin");
+            } else {
+              setPassError("Password is incorrect!!");
+            }
+          } else {
+            setUserError("Username is wrong!");
+          }
+        });
+    }
+  }, [userValid]);
 
   //Username and password error showing variables---
   const [userError, setUserError] = useState("");
@@ -105,37 +126,6 @@ function Header() {
     } else {
       setPassError("Plese fill this field");
       setPassValid(false);
-    }
-    if (userValid == true && passValid == true) {
-      checkHandle();
-    }
-
-    // Check user data to the backend
-  };
-
-  //Checking login username and password after the validation complete---
-  const checkHandle = async () => {
-    //-----Get user data from database-----
-
-    const response = await axios
-      .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
-      .then((res) => {
-        return res;
-      });
-
-    if (response.data.userName == inputedUser.UserName) {
-      if (response.data.userPassword == inputedUser.UserPassword) {
-        setCookie("Arts_College_User_Id", response.data.userName, 1);
-        setCookie("Arts_College_User_Role", response.data.userRole, 1);
-        setCookie("Arts_College_User_Email", response.data.userEmail, 1);
-        setCookie("Arts_College_User_MobileNo", response.data.userMobileNo, 1);
-
-        navigate("/admin");
-      } else {
-        setPassError("Password is incorrect!!");
-      }
-    } else {
-      setUserError("Username is wrong!");
     }
   };
 
