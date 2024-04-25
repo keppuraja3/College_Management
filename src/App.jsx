@@ -64,18 +64,19 @@ function App() {
         <Route path="/users/user/:id" element={<User />}></Route>
 
         <Route path="" element={<Header />}>
-          <Route path="" element={<Home />} />
+          <Route path="" index element={<Home />} />
           <Route path="course" element={<Course />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="department" element={<Department />} />
           <Route path="departmentDetails" element={<DepartmentDetails />} />
           <Route path="about" element={<About />} />
+          <Route path="*" element={<PageNotFound />} />
           <Route path="searchparam" element={<SearchParam />}></Route>
         </Route>
 
         <Route path="/admin" element={<Admin />}>
           <Route path="*" element={<PageNotFound />} />
-          <Route path="" element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="students" element={<Students />} />
           <Route path="professors" element={<Professors />} />

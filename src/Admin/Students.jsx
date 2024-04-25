@@ -46,8 +46,17 @@ function Students() {
   const [isEyeShow, setIsEye] = useState(false);
   const [passType, setPassType] = useState("password");
 
-  //User data storing variables--
+  //Student data storing variables--
   const [stuData, setStuData] = useState({
+    stuName: "",
+    stuEmail: "",
+    stuMobileNo: "",
+    stuCourse: "",
+    stuDepartment: "",
+  });
+
+  //Student data storing variables--
+  const [viewData, setViewData] = useState({
     stuName: "",
     stuEmail: "",
     stuMobileNo: "",
@@ -69,12 +78,12 @@ function Students() {
     }
   };
 
-  //Add user inputed data to the variable-----
+  //Add student inputed data to the variable-----
   const addstuData = (e) => {
     setStuData({ ...stuData, [e.target.name]: e.target.value });
   };
 
-  //user input validation checking variables---
+  //Student input validation checking variables---
   const [nameValid, setStuNameValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [mobilNoValid, setMobileNoValid] = useState(false);
@@ -82,7 +91,7 @@ function Students() {
   const [departmentValid, setDepartmentValid] = useState(false);
 
   //Error showing variables------
-  const [userError, setStuNameError] = useState("");
+  const [nameError, setStuNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [mobilNoError, setMobileNoError] = useState("");
   const [courseError, setCourseError] = useState("");
@@ -101,7 +110,7 @@ function Students() {
     //Regex for email----
     const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
 
-    //Username validation------
+    //Student name validation------
     if (!stuData.stuName == "") {
       if (stuData.stuName.length >= 3) {
         setStuNameValid(true);
@@ -112,7 +121,7 @@ function Students() {
       }
     } else {
       setStuNameValid(false);
-      setStuNameError("Please enter username");
+      setStuNameError("Please enter name");
     }
 
     //Email validation------
@@ -172,7 +181,10 @@ function Students() {
     ) {
       if (stuData.id) {
         const result = await axios
-          .post(`http://localhost:3030/updateUserById/${stuData.id}`, stuData)
+          .post(
+            `http://localhost:3030/updateStudentById/${stuData.id}`,
+            stuData
+          )
           .then((response) => {
             return response.data;
           })
@@ -201,8 +213,8 @@ function Students() {
   };
 
   //Edit stuData function-------
-  const editstuData = (user) => {
-    setStuData(user);
+  const editstuData = (student) => {
+    setStuData(student);
     handleShow();
   };
 
@@ -211,7 +223,7 @@ function Students() {
     const isDelete = confirm("Are you sure. You want to delete this data? ");
     if (isDelete) {
       const deleteOutput = await axios
-        .get(`http://localhost:3030/deleteUserById/${id}`)
+        .get(`http://localhost:3030/deleteStudentById/${id}`)
         .then((res) => {
           return res;
         })
@@ -222,13 +234,25 @@ function Students() {
     }
   };
 
-  //Create variable for store users data------
+  //View student details function--------
+  const viewstuData = (student) => {
+    setViewData(student);
+    handleViewShow();
+  };
+
+  // View model variables-----
+  const [viewShow, setViewShow] = useState(false);
+
+  const handleViewClose = () => setViewShow(false);
+  const handleViewShow = () => setViewShow(true);
+
+  //Create variable for store Students data------
   const [studentsData, setStudentsData] = useState([]);
 
-  //Create variable for store filtered user data-----
+  //Create variable for store filtered Students data-----
   const [filterStudets, setFilterStudents] = useState([]);
 
-  //Get users data from backend------
+  //Get students data from backend------
   const getData = async () => {
     await axios
       .get("http://localhost:3030/viewStudents")
@@ -239,23 +263,23 @@ function Students() {
       .catch((err) => console.error(err));
   };
 
-  //Load users data to the table----
+  //Load students data to the table----
   useEffect(() => {
     getData();
   }, []);
 
-  //Search user details-----
-  const searchUser = (e) => {
+  //Search student details-----
+  const searchStudent = (e) => {
     const searchText = e.target.value.toLowerCase();
-    const filteredUsers = studentsData.filter((user) => {
+    const filteredStudents = studentsData.filter((stu) => {
       if (
-        user.userName.toLowerCase().includes(searchText) ||
-        user.stuCourse.toLowerCase().includes(searchText)
+        stu.stuName.toLowerCase().includes(searchText) ||
+        stu.stuCourse.toLowerCase().includes(searchText)
       ) {
-        return user;
+        return stu;
       }
     });
-    setFilterStudents(filteredUsers);
+    setFilterStudents(filteredStudents);
   };
 
   return (
@@ -272,7 +296,7 @@ function Students() {
                 <Col lg={4}>
                   <img
                     src="/img/graduation-cap.svg"
-                    alt="user"
+                    alt="graduation cap"
                     style={{ maxWidth: "50px" }}
                   />
                 </Col>
@@ -289,7 +313,7 @@ function Students() {
                 <Col lg={4}>
                   <img
                     src="/img/attendance-light.png"
-                    alt="user"
+                    alt="attendance"
                     style={{ maxWidth: "50px" }}
                   />
                 </Col>
@@ -306,7 +330,7 @@ function Students() {
                 <Col lg={4}>
                   <img
                     src="/img/report-light.png"
-                    alt="user"
+                    alt="report"
                     style={{ maxWidth: "50px" }}
                   />
                 </Col>
@@ -320,13 +344,13 @@ function Students() {
         <h3 className=" text-center text-uppercase ">Student Table</h3>
 
         <div className=" d-flex  justify-content-between  ">
-          {/* add user button */}
+          {/* add student button */}
           <div className="p-2 bg-light rounded-2 user-select-none searchBox mb-2 ">
             <input
               type="text"
               className=" border-0 bg-transparent "
               placeholder="Search"
-              onChange={searchUser}
+              onChange={searchStudent}
               style={{ maxWidth: "150px" }}
             />
             <img src="/img/search.png" width={20} alt="" />
@@ -338,7 +362,7 @@ function Students() {
           >
             Add&nbsp;+
           </Button>
-          {/* User Add Form Modal Start*/}
+          {/* Student Add Form Modal Start*/}
           <Modal
             show={show}
             onHide={handleClose}
@@ -357,7 +381,7 @@ function Students() {
                 id="register-container"
                 className=" d-flex bg-warning px-0 pt-0 "
               >
-                {/* Form for add and update user data */}
+                {/* Form for add and update Student data */}
                 <Form onSubmit={handleSubmit}>
                   <div className=" d-grid pt-0 justify-content-center p-3  ">
                     <Row className="p-3 pt-0 d-flex justify-content-between">
@@ -366,12 +390,12 @@ function Students() {
                         <Form.Control
                           type="text"
                           name="stuName"
-                          placeholder="Enter user name"
+                          placeholder="Enter student name"
                           onChange={addstuData}
                           value={stuData.stuName}
                         />
                         <div className=" text-danger text-start ">
-                          {userError}
+                          {nameError}
                         </div>
                       </Form.Group>
                       <Form.Group
@@ -464,10 +488,63 @@ function Students() {
               </div>
             </Modal.Body>
           </Modal>
-          {/* User Add Form Modal End*/}
+          {/* Student Add Form Modal End*/}
+
+          {/* Student view Modal Start*/}
+          <Modal show={viewShow} onHide={handleViewClose}>
+            <Modal.Body className=" bg-warning pt-0 rounded-bottom">
+              <h1 style={{ textAlign: "center" }}>View Student</h1>
+              <div
+                id="register-container"
+                className=" d-flex bg-warning px-0 pt-0 "
+              >
+                {/* Form for add and update Student data */}
+                <Form>
+                  <div className=" d-grid pt-0 justify-content-center p-3  ">
+                    <Row className="p-3 pt-0 d-flex justify-content-between">
+                      <Form.Group as={Col} md="6" xs="12">
+                        <Form.Label>Student Name</Form.Label>
+                        <Form.Control type="text" value={viewData.stuName} />
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        className=" mt-md-0  mt-3 "
+                        xs="12"
+                      >
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="text" value={viewData.stuEmail} />
+                      </Form.Group>
+                      <Form.Group as={Col} md="6" xs="12">
+                        <Form.Label>Mobile No</Form.Label>
+                        <Form.Control
+                          type="number"
+                          value={viewData.stuMobileNo}
+                        />
+                      </Form.Group>
+
+                      <Form.Group as={Col} md="6" xs="12">
+                        <Form.Label>Department</Form.Label>
+                        <Form.Control
+                          type="text"
+                          value={viewData.stuDepartment}
+                        />
+                      </Form.Group>
+
+                      <Form.Group as={Col} md="6" xs="12">
+                        <Form.Label>Course</Form.Label>
+                        <Form.Control type="text" value={viewData.stuCourse} />
+                      </Form.Group>
+                    </Row>
+                  </div>
+                </Form>
+              </div>
+            </Modal.Body>
+          </Modal>
+          {/* Student view Modal End*/}
         </div>
 
-        {/* User list table */}
+        {/* Student list table */}
         <Table
           hover
           responsive
@@ -477,29 +554,29 @@ function Students() {
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Reg No</th>
+              <th>Course</th>
               <th>Mobile</th>
-              <th>Email</th>
+              <th>Department</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {filterStudets.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.userName}</td>
+            {filterStudets.map((stu) => (
+              <tr key={stu.id}>
+                <td>{stu.id}</td>
+                <td>{stu.stuName}</td>
                 <td>
                   <Badge bg="success" className=" text-uppercase">
-                    {user.stuCourse}
+                    {stu.stuCourse}
                   </Badge>
                 </td>
-                <td>{user.stuMobileNo}</td>
-                <td>{user.userPassword}</td>
+                <td>{stu.stuMobileNo}</td>
+                <td>{stu.stuDepartment}</td>
                 <td className=" d-flex justify-content-center align-items-center ">
                   <Button
                     variant="info"
                     className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
-                    onClick={() => viewstuData(user)}
+                    onClick={() => viewstuData(stu)}
                   >
                     <FaEye />
                     &nbsp;View
@@ -507,7 +584,7 @@ function Students() {
                   <Button
                     variant="primary"
                     className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
-                    onClick={() => editstuData(user)}
+                    onClick={() => editstuData(stu)}
                   >
                     <MdEdit />
                     &nbsp;Edit
@@ -516,7 +593,7 @@ function Students() {
                     variant="danger"
                     className="d-flex justify-content-center align-items-center"
                     onClick={() => {
-                      deletestuData(user.id);
+                      deletestuData(stu.id);
                     }}
                   >
                     <MdDelete />
