@@ -82,15 +82,52 @@ function UserManagement() {
   const [roleError, setRoleError] = useState("");
   const [passError, setPassError] = useState("");
 
+  useEffect(() => {
+    //Post data to the backend after the validation checking---
+    async () => {
+      if (
+        userValid == true &&
+        passValid == true &&
+        emailValid == true &&
+        roleValid == true &&
+        mobilNoValid == true
+      ) {
+        if (userData.id) {
+          const result = await axios
+            .post(
+              `http://localhost:3030/updateUserById/${userData.id}`,
+              userData
+            )
+            .then((response) => {
+              return response.data;
+            })
+            .catch((err) => {
+              return err;
+            });
+        } else {
+          const result = await axios
+            .post("http://localhost:3030/addUser", userData)
+            .then((response) => {
+              return response.data;
+            })
+            .catch((err) => {
+              return err;
+            });
+        }
+
+        getData();
+        handleClose();
+        setUserValid(false);
+        setEmailValid(false);
+        setMobileNoValid(false);
+        setRoleValid(false);
+        setPassValid(false);
+      }
+    };
+  }, [userValid, emailValid, mobilNoValid, roleValid, passValid]);
   //Register form validation and get data from backend---
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    setUserValid(false);
-    setEmailValid(false);
-    setMobileNoValid(false);
-    setRoleValid(false);
-    setPassValid(false);
 
     //Regex for password and email----
     const passwordPattern =
@@ -170,43 +207,6 @@ function UserManagement() {
     } else {
       setPassValid(false);
       setPassError("Please enter the password");
-    }
-
-    //Post data to the backend after the validation checking---
-    if (
-      userValid == true &&
-      passValid == true &&
-      emailValid == true &&
-      roleValid == true &&
-      mobilNoValid == true
-    ) {
-      if (userData.id) {
-        const result = await axios
-          .post(`http://localhost:3030/updateUserById/${userData.id}`, userData)
-          .then((response) => {
-            return response.data;
-          })
-          .catch((err) => {
-            return err;
-          });
-      } else {
-        const result = await axios
-          .post("http://localhost:3030/addUser", userData)
-          .then((response) => {
-            return response.data;
-          })
-          .catch((err) => {
-            return err;
-          });
-      }
-
-      getData();
-      handleClose();
-      setUserValid(false);
-      setEmailValid(false);
-      setMobileNoValid(false);
-      setRoleValid(false);
-      setPassValid(false);
     }
   };
 

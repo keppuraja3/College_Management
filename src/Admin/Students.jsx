@@ -20,6 +20,9 @@ function Students() {
   //Page Title---
   document.title = "Students";
 
+  //Register form show and hide control variable----
+  const [show, setShow] = useState(false);
+
   //Open register form---
   const handleShow = () => {
     setShow(true);
@@ -28,12 +31,12 @@ function Students() {
   //Close register form--
   const handleClose = () => {
     setShow(false);
-    setUserError("");
+    setStuNameError("");
     setEmailError("");
     setMobileNoError("");
-    setRoleError("");
-    setPassError("");
-    setUserData({});
+    setCourseError("");
+    setDepartmentError("");
+    setStuData({});
     setPassType("password");
   };
 
@@ -44,12 +47,12 @@ function Students() {
   const [passType, setPassType] = useState("password");
 
   //User data storing variables--
-  const [userData, setUserData] = useState({
-    userEmail: "",
-    userMobileNo: "",
-    userName: "",
-    userPassword: "",
-    userRole: "",
+  const [stuData, setStuData] = useState({
+    stuName: "",
+    stuEmail: "",
+    stuMobileNo: "",
+    stuCourse: "",
+    stuDepartment: "",
   });
 
   //Password visibility eye changeing content----
@@ -67,56 +70,54 @@ function Students() {
   };
 
   //Add user inputed data to the variable-----
-  const addUserData = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+  const addstuData = (e) => {
+    setStuData({ ...stuData, [e.target.name]: e.target.value });
   };
 
   //user input validation checking variables---
-  const [userValid, setUserValid] = useState(false);
+  const [nameValid, setStuNameValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [mobilNoValid, setMobileNoValid] = useState(false);
-  const [roleValid, setRoleValid] = useState(false);
-  const [passValid, setPassValid] = useState(false);
+  const [courseValid, setCourseValid] = useState(false);
+  const [departmentValid, setDepartmentValid] = useState(false);
 
   //Error showing variables------
-  const [userError, setUserError] = useState("");
+  const [userError, setStuNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [mobilNoError, setMobileNoError] = useState("");
-  const [roleError, setRoleError] = useState("");
-  const [passError, setPassError] = useState("");
+  const [courseError, setCourseError] = useState("");
+  const [departmentError, setDepartmentError] = useState("");
 
   //Register form validation and get data from backend---
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setUserValid(false);
+    setStuNameValid(false);
     setEmailValid(false);
     setMobileNoValid(false);
-    setRoleValid(false);
-    setPassValid(false);
+    setCourseValid(false);
+    setDepartmentValid(false);
 
-    //Regex for password and email----
-    const passwordPattern =
-      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    //Regex for email----
     const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
 
     //Username validation------
-    if (!userData.userName == "") {
-      if (userData.userName.length >= 3) {
-        setUserValid(true);
-        setUserError("");
+    if (!stuData.stuName == "") {
+      if (stuData.stuName.length >= 3) {
+        setStuNameValid(true);
+        setStuNameError("");
       } else {
-        setUserValid(false);
-        setUserError("Username minimum have 3 characters");
+        setStuNameValid(false);
+        setStuNameError("stuName minimum have 3 characters");
       }
     } else {
-      setUserValid(false);
-      setUserError("Please enter username");
+      setStuNameValid(false);
+      setStuNameError("Please enter username");
     }
 
     //Email validation------
-    if (!userData.userEmail == "") {
-      const isEmail = userData.userEmail.match(emailPattern);
+    if (!stuData.stuEmail == "") {
+      const isEmail = stuData.stuEmail.match(emailPattern);
       if (isEmail) {
         setEmailError("");
         setEmailValid(true);
@@ -130,8 +131,8 @@ function Students() {
     }
 
     //Mobile No validation-------
-    if (!userData.userMobileNo == "") {
-      if (userData.userMobileNo.length == 10) {
+    if (!stuData.stuMobileNo == "") {
+      if (stuData.stuMobileNo.length == 10) {
         setMobileNoValid(true);
         setMobileNoError("");
       } else {
@@ -140,52 +141,38 @@ function Students() {
       }
     } else {
       setMobileNoValid(false);
-      setMobileNoError("Please enter mobile no");
+      setMobileNoError("Please Enter Mobile No");
     }
 
-    //Role validation-------
-    if (!userData.userRole == "") {
-      setRoleValid(true);
-      setRoleError("");
+    //Department validation-------
+    if (!stuData.stuDepartment == "") {
+      setDepartmentValid(true);
+      setDepartmentError("");
     } else {
-      setRoleValid(false);
-      setRoleError("Please select the role");
+      setDepartmentValid(false);
+      setDepartmentError("Please select the Department");
     }
 
-    //Password validation------
-    if (!userData.userPassword == "") {
-      const isPassValid = userData.userPassword.match(passwordPattern);
-
-      if (userData.userPassword.length >= 8) {
-        if (isPassValid) {
-          setPassValid(true);
-          setPassError("");
-        } else {
-          setPassValid(false);
-          setPassError(
-            "Password must have one number, one capital letter, one small letter and one symbol"
-          );
-        }
-      } else {
-        setPassValid(false);
-        setPassError("Password must have 8 digits");
-      }
+    //Course validation-------
+    if (!stuData.stuCourse == "") {
+      setCourseValid(true);
+      setCourseError("");
     } else {
-      setPassValid(false);
-      setPassError("Please enter the password");
+      setCourseValid(false);
+      setCourseError("Please select the Course");
     }
 
     //Post data to the backend after the validation checking---
     if (
-      userValid == true &&
-      passValid == true &&
+      nameValid == true &&
+      departmentValid == true &&
       emailValid == true &&
-      roleValid == true &&
+      courseValid == true &&
       mobilNoValid == true
     ) {
-      if (userData.id) {
+      if (stuData.id) {
         const result = await axios
-          .post(`http://localhost:3030/updateUserById/${userData.id}`, userData)
+          .post(`http://localhost:3030/updateUserById/${stuData.id}`, stuData)
           .then((response) => {
             return response.data;
           })
@@ -194,7 +181,7 @@ function Students() {
           });
       } else {
         const result = await axios
-          .post("http://localhost:3030/addUser", userData)
+          .post("http://localhost:3030/addStudent", stuData)
           .then((response) => {
             return response.data;
           })
@@ -205,22 +192,22 @@ function Students() {
 
       getData();
       handleClose();
-      setUserValid(false);
+      setStuNameValid(false);
       setEmailValid(false);
       setMobileNoValid(false);
-      setRoleValid(false);
-      setPassValid(false);
+      setCourseValid(false);
+      setDepartmentValid(false);
     }
   };
 
-  //Edit userData function-------
-  const editUserData = (user) => {
-    setUserData(user);
+  //Edit stuData function-------
+  const editstuData = (user) => {
+    setStuData(user);
     handleShow();
   };
 
-  //delete userData function--------
-  const deleteUserData = async (id) => {
+  //delete stuData function--------
+  const deletestuData = async (id) => {
     const isDelete = confirm("Are you sure. You want to delete this data? ");
     if (isDelete) {
       const deleteOutput = await axios
@@ -236,21 +223,18 @@ function Students() {
   };
 
   //Create variable for store users data------
-  const [usersData, setUsersData] = useState([]);
+  const [studentsData, setStudentsData] = useState([]);
 
   //Create variable for store filtered user data-----
-  const [filterUsers, setFilterUsers] = useState([]);
-
-  //Register form show and hide control variable----
-  const [show, setShow] = useState(false);
+  const [filterStudets, setFilterStudents] = useState([]);
 
   //Get users data from backend------
   const getData = async () => {
     await axios
-      .get("http://localhost:3030/viewUsers")
+      .get("http://localhost:3030/viewStudents")
       .then((response) => {
-        setUsersData(response.data);
-        setFilterUsers(response.data);
+        setStudentsData(response.data);
+        setFilterStudents(response.data);
       })
       .catch((err) => console.error(err));
   };
@@ -263,15 +247,15 @@ function Students() {
   //Search user details-----
   const searchUser = (e) => {
     const searchText = e.target.value.toLowerCase();
-    const filteredUsers = usersData.filter((user) => {
+    const filteredUsers = studentsData.filter((user) => {
       if (
         user.userName.toLowerCase().includes(searchText) ||
-        user.userRole.toLowerCase().includes(searchText)
+        user.stuCourse.toLowerCase().includes(searchText)
       ) {
         return user;
       }
     });
-    setFilterUsers(filteredUsers);
+    setFilterStudents(filteredUsers);
   };
 
   return (
@@ -367,7 +351,7 @@ function Students() {
             ></Modal.Header>
             <Modal.Body className=" bg-warning pt-0 rounded-bottom">
               <h1 style={{ textAlign: "center" }}>
-                {userData.id ? "Update user" : "Add user"}
+                {stuData.id ? "Update Student" : "Add Student"}
               </h1>
               <div
                 id="register-container"
@@ -378,13 +362,13 @@ function Students() {
                   <div className=" d-grid pt-0 justify-content-center p-3  ">
                     <Row className="p-3 pt-0 d-flex justify-content-between">
                       <Form.Group as={Col} md="6" xs="12">
-                        <Form.Label>User Name</Form.Label>
+                        <Form.Label>Student Name</Form.Label>
                         <Form.Control
                           type="text"
-                          name="userName"
+                          name="stuName"
                           placeholder="Enter user name"
-                          onChange={addUserData}
-                          value={userData.userName}
+                          onChange={addstuData}
+                          value={stuData.stuName}
                         />
                         <div className=" text-danger text-start ">
                           {userError}
@@ -399,11 +383,11 @@ function Students() {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                           type="text"
-                          name="userEmail"
+                          name="stuEmail"
                           placeholder="Enter email"
                           aria-describedby="inputGroupPrepend"
-                          onChange={addUserData}
-                          value={userData.userEmail}
+                          onChange={addstuData}
+                          value={stuData.stuEmail}
                         />
                         <div className=" text-danger text-start ">
                           {emailError}
@@ -413,10 +397,10 @@ function Students() {
                         <Form.Label>Mobile No</Form.Label>
                         <Form.Control
                           type="number"
-                          name="userMobileNo"
+                          name="stuMobileNo"
                           placeholder="Enter mobile no"
-                          onChange={addUserData}
-                          value={userData.userMobileNo}
+                          onChange={addstuData}
+                          value={stuData.stuMobileNo}
                         />
                         <div className=" text-danger text-start ">
                           {mobilNoError}
@@ -428,50 +412,52 @@ function Students() {
                         xs="12"
                         className="mt-md-0 mt-3 "
                       >
-                        <Form.Label>Role</Form.Label>
+                        <Form.Label>Department</Form.Label>
                         <Form.Select
                           aria-label="Default select example"
-                          name="userRole"
-                          onChange={addUserData}
-                          value={userData.userRole}
+                          name="stuDepartment"
+                          onChange={addstuData}
+                          value={stuData.stuDepartment}
                         >
                           <option value="none">Select</option>
-                          <option value="staff">Staff</option>
-                          <option value="admin">Admin</option>
-                          <option value="student">Student</option>
+                          <option value="commerce">Commerce</option>
+                          <option value="maths">Maths</option>
+                          <option value="economics">Economics</option>
+                          <option value="physics">Physics</option>
                         </Form.Select>
                         <div className=" text-danger text-start ">
-                          {roleError}
+                          {departmentError}
                         </div>
                       </Form.Group>
-                      <Form.Group as={Col}>
-                        <Form.Label>Password</Form.Label>
-                        <div className="d-flex justify-content-between passwordControl border border-3 bg-light rounded-2 ">
-                          <Form.Control
-                            type={passType}
-                            placeholder="Enter password"
-                            name="userPassword"
-                            className=" bg-transparent border-0 shadow-none"
-                            onChange={addUserData}
-                            value={userData.userPassword}
-                          />
-                          <img
-                            src="/img/eye.svg"
-                            alt="eye"
-                            className=" me-1 py-2"
-                            width={20}
-                            onClick={ChangePassVisible}
-                          />
-                        </div>
+
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        xs="12"
+                        className="mt-md-0 mt-3 "
+                      >
+                        <Form.Label>Course</Form.Label>
+                        <Form.Select
+                          aria-label="Default select example"
+                          name="stuCourse"
+                          onChange={addstuData}
+                          value={stuData.stuCourse}
+                        >
+                          <option value="none">Select</option>
+                          <option value="B.COM">B.COM</option>
+                          <option value="B.A">B.A</option>
+                          <option value="M.COM">M.COM</option>
+                          <option value="M.A">M.A</option>
+                        </Form.Select>
                         <div className=" text-danger text-start ">
-                          {passError}
+                          {courseError}
                         </div>
                       </Form.Group>
                     </Row>
                   </div>
                   <div className="text-center">
                     <Button type="submit">
-                      {userData.id ? "Update" : "Add"}
+                      {stuData.id ? "Update" : "Add"}
                     </Button>
                   </div>
                 </Form>
@@ -498,22 +484,22 @@ function Students() {
             </tr>
           </thead>
           <tbody>
-            {filterUsers.map((user) => (
+            {filterStudets.map((user) => (
               <tr key={user.id}>
                 <td>{user.id}</td>
                 <td>{user.userName}</td>
                 <td>
                   <Badge bg="success" className=" text-uppercase">
-                    {user.userRole}
+                    {user.stuCourse}
                   </Badge>
                 </td>
-                <td>{user.userMobileNo}</td>
+                <td>{user.stuMobileNo}</td>
                 <td>{user.userPassword}</td>
                 <td className=" d-flex justify-content-center align-items-center ">
                   <Button
                     variant="info"
                     className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
-                    onClick={() => viewUserData(user)}
+                    onClick={() => viewstuData(user)}
                   >
                     <FaEye />
                     &nbsp;View
@@ -521,7 +507,7 @@ function Students() {
                   <Button
                     variant="primary"
                     className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
-                    onClick={() => editUserData(user)}
+                    onClick={() => editstuData(user)}
                   >
                     <MdEdit />
                     &nbsp;Edit
@@ -530,7 +516,7 @@ function Students() {
                     variant="danger"
                     className="d-flex justify-content-center align-items-center"
                     onClick={() => {
-                      deleteUserData(user.id);
+                      deletestuData(user.id);
                     }}
                   >
                     <MdDelete />
@@ -541,7 +527,7 @@ function Students() {
             ))}
           </tbody>
         </Table>
-        {filterUsers.length > 0 ? (
+        {filterStudets.length > 0 ? (
           <h1></h1>
         ) : (
           <h1 className=" text-secondary text-center pt-3">No data found</h1>

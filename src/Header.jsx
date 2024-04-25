@@ -66,13 +66,13 @@ function Header() {
     setInputedUser({ ...inputedUser, [e.target.name]: e.target.value });
   };
 
-  // Username and password validation variables---
+  // Username nd password validation variables---
   const [userValid, setUserValid] = useState(false);
   const [passValid, setPassValid] = useState(false);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (userValid === true && passValid === true) {
-      await axios
+      axios
         .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
         .then((res) => {
           if (res.data.userName == inputedUser.UserName) {
@@ -91,7 +91,7 @@ function Header() {
           }
         });
     }
-  }, [userValid]);
+  }, [userValid, passValid]);
 
   //Username and password error showing variables---
   const [userError, setUserError] = useState("");
