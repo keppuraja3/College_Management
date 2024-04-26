@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import { MdDelete, MdEdit } from "react-icons/md";
-
+import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
-import { Link, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
@@ -71,7 +70,7 @@ function UserManagement() {
   //user input validation checking variables---
   const [userValid, setUserValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
-  const [mobilNoValid, setMobileNoValid] = useState(false);
+  const [mobileNoValid, setMobileNoValid] = useState(false);
   const [roleValid, setRoleValid] = useState(false);
   const [passValid, setPassValid] = useState(false);
 
@@ -84,16 +83,17 @@ function UserManagement() {
 
   useEffect(() => {
     //Post data to the backend after the validation checking---
-    async () => {
+    (async () => {
       if (
         userValid == true &&
         passValid == true &&
         emailValid == true &&
         roleValid == true &&
-        mobilNoValid == true
+        mobileNoValid == true
       ) {
         if (userData.id) {
-          const result = await axios
+          console.log("Update");
+          await axios
             .post(
               `http://localhost:3030/updateUserById/${userData.id}`,
               userData
@@ -105,7 +105,9 @@ function UserManagement() {
               return err;
             });
         } else {
-          const result = await axios
+          console.log("Add");
+
+          await axios
             .post("http://localhost:3030/addUser", userData)
             .then((response) => {
               return response.data;
@@ -123,8 +125,9 @@ function UserManagement() {
         setRoleValid(false);
         setPassValid(false);
       }
-    };
-  }, [userValid, emailValid, mobilNoValid, roleValid, passValid]);
+    })();
+  }, [userValid, passValid, emailValid, roleValid, mobileNoValid]);
+
   //Register form validation and get data from backend---
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -326,6 +329,7 @@ function UserManagement() {
                           placeholder="Enter user name"
                           onChange={addUserData}
                           value={userData.userName}
+                          autoFocus
                         />
                         <div className=" text-danger text-start ">
                           {userError}

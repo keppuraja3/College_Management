@@ -393,6 +393,7 @@ function Students() {
                           placeholder="Enter student name"
                           onChange={addstuData}
                           value={stuData.stuName}
+                          autoFocus
                         />
                         <div className=" text-danger text-start ">
                           {nameError}

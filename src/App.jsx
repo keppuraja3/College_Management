@@ -35,6 +35,7 @@ import "./assets/Css/Home.css";
 import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
 import DepartmentDetails from "./DepartmentDetails";
+import UseContextPage from "./UseContextPage";
 function App() {
   const [screenLoading, setScreenLoading] = useState(false);
 
@@ -72,6 +73,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="searchparam" element={<SearchParam />}></Route>
+          <Route path="useContext" element={<UseContextPage />}></Route>
         </Route>
 
         <Route path="/admin" element={<Admin />}>
