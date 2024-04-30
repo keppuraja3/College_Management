@@ -54,17 +54,17 @@ function Footer() {
               <Link className=" text-light" to={"/"}>
                 Youtube
               </Link>
-              <Link className=" text-light" to={"/course"}>
+              <Link className=" text-light" to={"/facebook"}>
                 Facebook
               </Link>
-              <Link className=" text-light" to={"/departments"}>
+              <Link className=" text-light" to={"/twitter"}>
                 Twitter
               </Link>
-              <Link className=" text-light" to={"/gallery"}>
+              <Link className=" text-light" to={"/youtube"}>
                 Youtube
               </Link>
-              <Link className=" text-light" to={"/about"}>
-                Twitter
+              <Link className=" text-light" to={"/socialmedia"}>
+                Social Media
               </Link>
             </ul>
           </Col>
@@ -74,16 +74,16 @@ function Footer() {
               <Link className=" text-light" to={"/"}>
                 Login
               </Link>
-              <Link className=" text-light" to={"/course"}>
+              <Link className=" text-light" to={"/fees"}>
                 Fees
               </Link>
-              <Link className=" text-light" to={"/departments"}>
+              <Link className=" text-light" to={"/syllabus"}>
                 Syllabus
               </Link>
-              <Link className=" text-light" to={"/gallery"}>
+              <Link className=" text-light" to={"/rules"}>
                 Campus Rules
               </Link>
-              <Link className=" text-light" to={"/about"}>
+              <Link className=" text-light" to={"/hostel"}>
                 Hostel Fees
               </Link>
             </ul>

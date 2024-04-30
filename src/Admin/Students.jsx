@@ -576,7 +576,7 @@ function Students() {
                 <td className=" d-flex justify-content-center align-items-center ">
                   <Button
                     variant="info"
-                    className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
+                    className=" mb-sm-0  me-1 d-flex justify-content-center align-items-center"
                     onClick={() => viewstuData(stu)}
                   >
                     <FaEye />
@@ -584,7 +584,7 @@ function Students() {
                   </Button>
                   <Button
                     variant="primary"
-                    className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
+                    className=" mb-sm-0  me-1 d-flex justify-content-center align-items-center"
                     onClick={() => editstuData(stu)}
                   >
                     <MdEdit />
@@ -592,7 +592,7 @@ function Students() {
                   </Button>
                   <Button
                     variant="danger"
-                    className="d-flex justify-content-center align-items-center"
+                    className=" d-flex justify-content-center align-items-center"
                     onClick={() => {
                       deletestuData(stu.id);
                     }}

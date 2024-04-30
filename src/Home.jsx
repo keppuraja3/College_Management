@@ -122,7 +122,7 @@ function Home() {
             {/* Result and evets notification content */}
             <div
               className="notification-container bg-warning rounded-bottom-3"
-              style={{ maxHeight: "350px" }}
+              style={{ maxHeight: "430px" }}
             >
               <Tabs
                 justify

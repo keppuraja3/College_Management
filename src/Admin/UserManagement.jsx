@@ -92,7 +92,6 @@ function UserManagement() {
         mobileNoValid == true
       ) {
         if (userData.id) {
-          console.log("Update");
           await axios
             .post(
               `http://localhost:3030/updateUserById/${userData.id}`,
@@ -104,26 +103,43 @@ function UserManagement() {
             .catch((err) => {
               return err;
             });
+
+          getData();
+          handleClose();
+          setUserValid(false);
+          setEmailValid(false);
+          setMobileNoValid(false);
+          setRoleValid(false);
+          setPassValid(false);
         } else {
-          console.log("Add");
+          // const isUserExist = usersData.filter((user) => {
+          //   if (user.userName == userData.userName) {
+          //     return true;
+          //   }
+          // });
 
-          await axios
-            .post("http://localhost:3030/addUser", userData)
-            .then((response) => {
-              return response.data;
-            })
-            .catch((err) => {
-              return err;
-            });
+          // console.log(isUserExist);
+          if (isUserExist) {
+            setUserError("Username is already in use.");
+          } else {
+            await axios
+              .post("http://localhost:3030/addUser", userData)
+              .then((response) => {
+                return response.data;
+              })
+              .catch((err) => {
+                return err;
+              });
+
+            getData();
+            handleClose();
+            setUserValid(false);
+            setEmailValid(false);
+            setMobileNoValid(false);
+            setRoleValid(false);
+            setPassValid(false);
+          }
         }
-
-        getData();
-        handleClose();
-        setUserValid(false);
-        setEmailValid(false);
-        setMobileNoValid(false);
-        setRoleValid(false);
-        setPassValid(false);
       }
     })();
   }, [userValid, passValid, emailValid, roleValid, mobileNoValid]);

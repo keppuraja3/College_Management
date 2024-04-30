@@ -71,10 +71,11 @@ function Header() {
   const [passValid, setPassValid] = useState(false);
 
   useEffect(() => {
-    if (userValid === true && passValid === true) {
+    if (userValid == true && passValid == true) {
       axios
         .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
         .then((res) => {
+          console.log(res.data);
           if (res.data.userName == inputedUser.UserName) {
             if (res.data.userPassword == inputedUser.UserPassword) {
               setLocal("Arts_College_User_Id", res.data.userName);
@@ -215,7 +216,9 @@ function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
       <Outlet />
+
       {/* Login form modal */}
       <Modal
         show={show}
