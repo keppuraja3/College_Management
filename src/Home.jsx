@@ -231,7 +231,7 @@ function Home() {
                   </ul>
                 </Tab>
 
-                <Tab eventKey="function" title="Function">
+                <Tab eventKey="announcement" title="Announcement">
                   <ul>
                     <li>
                       April 27 college annual day function{" "}
