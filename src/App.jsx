@@ -36,6 +36,7 @@ import "./assets/Css/Style.css";
 import "./Admin/Css/Admin.css";
 import DepartmentDetails from "./DepartmentDetails";
 import UseContextPage from "./UseContextPage";
+import Staff from "./Staff/Staff";
 function App() {
   const [screenLoading, setScreenLoading] = useState(false);
 
@@ -89,6 +90,7 @@ function App() {
           <Route path="settings" element={<Settings />} />
           <Route path="report" element={<Report />} />
         </Route>
+        <Route path="staff" element={<Staff />} />
       </Routes>
     </>
   );

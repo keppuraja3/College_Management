@@ -24,6 +24,7 @@ function Header() {
     setShow(false);
     setUserError("");
     setPassError("");
+    setPassType("password");
   };
 
   const handleShow = () => setShow(true);
@@ -70,29 +71,34 @@ function Header() {
   const [userValid, setUserValid] = useState(false);
   const [passValid, setPassValid] = useState(false);
 
-  useEffect(() => {
-    if (userValid == true && passValid == true) {
-      axios
-        .get(`http://localhost:3030/viewUser/${inputedUser.UserName}`)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.userName == inputedUser.UserName) {
-            if (res.data.userPassword == inputedUser.UserPassword) {
-              setLocal("Arts_College_User_Id", res.data.userName);
-              setLocal("Arts_College_User_Role", res.data.userRole);
-              setLocal("Arts_College_User_Email", res.data.userEmail);
-              setLocal("Arts_College_User_MobileNo", res.data.userMobileNo);
+  // useEffect(() => {
+  //   if (userValid == true && passValid == true) {
+  //     axios
+  //       .get(
+  //         `http://localhost:3030/findUser/${inputedUser.UserName}/${inputedUser.userPassword}`
+  //       )
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         if (res.data.userName == inputedUser.UserName) {
+  //           if (res.data.userPassword == inputedUser.UserPassword) {
+  //             setLocal("Arts_College_User_Id", res.data.userName);
+  //             setLocal("Arts_College_User_Role", res.data.userRole);
+  //             setLocal("Arts_College_User_Email", res.data.userEmail);
+  //             setLocal("Arts_College_User_MobileNo", res.data.userMobileNo);
 
-              navigate("/admin");
-            } else {
-              setPassError("Password is incorrect!!");
-            }
-          } else {
-            setUserError("Username is wrong!");
-          }
-        });
-    }
-  }, [userValid, passValid]);
+  //             navigate("/admin");
+  //           } else {
+  //             setPassError("Password is incorrect!!");
+  //           }
+  //         } else {
+  //           setUserError("Username is wrong!");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }, [userValid, passValid]);
 
   //Username and password error showing variables---
   const [userError, setUserError] = useState("");
@@ -127,6 +133,41 @@ function Header() {
     } else {
       setPassError("Plese fill this field");
       setPassValid(false);
+    }
+
+    if (userValid == true && passValid == true) {
+      axios
+        .get(
+          `http://localhost:3030/findUser/${inputedUser.UserName}/${inputedUser.UserPassword}`
+        )
+        .then((res) => {
+          console.log(res.data.body);
+          console.log("inputed User: ", inputedUser.UserName);
+          console.log("inputed pass: ", inputedUser.UserPassword);
+          console.log("res data User: ", res.data.body.userName);
+          console.log("res data pass: ", res.data.body.userPassword);
+          if (res.data.body.userName == inputedUser.UserName) {
+            setLocal("Arts_College_User_Id", res.data.body.userName);
+            setLocal("Arts_College_User_Role", res.data.body.userRole);
+            setLocal("Arts_College_User_Email", res.data.body.userEmail);
+            setLocal("Arts_College_User_MobileNo", res.data.body.userMobileNo);
+
+            if (res.data.body.userRole == "admin") {
+              navigate("/admin");
+            } else if (res.data.body.userRole == "staff") {
+              navigate("/staff");
+              handleClose();
+            } else {
+              navigate("/student");
+              handleClose();
+            }
+          } else {
+            setPassError("Username or Password is wrong!");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
