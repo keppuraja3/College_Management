@@ -9,8 +9,13 @@ import Badge from "react-bootstrap/Badge";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
+import { useAuth } from "../Auth";
 
 function Admin_Header() {
+  //Auth
+
+  const auth = useAuth();
+
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
@@ -36,6 +41,7 @@ function Admin_Header() {
 
   const UserLogout = () => {
     localStorage.clear();
+    auth.logout();
     navigate("/");
   };
 

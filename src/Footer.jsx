@@ -97,9 +97,9 @@ function Footer() {
                 className=" rounded-3 "
                 src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d23645.96242222924!2d78.1209092000777!3d9.921785384565947!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1713869529831!5m2!1sen!2sin"
                 style={{ border: "0", width: "100%" }}
-                allowfullscreen=""
+                allowFullScreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </Col>

@@ -30,7 +30,7 @@ function Home() {
   return (
     <>
       {/* Carousel banner on home page  */}
-      <Carousel className=" rounded-bottom-5 s overflow-hidden ">
+      <Carousel className=" rounded-bottom-3 overflow-hidden ">
         {/* slide one */}
         <Carousel.Item interval={3500} className="banner-container">
           <img

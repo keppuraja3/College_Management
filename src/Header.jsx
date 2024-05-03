@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useAuth } from "./Auth";
 import Form from "react-bootstrap/Form";
 import LoginBg from "/img/logo.png";
 import "./assets/Css/Header.css";
@@ -16,6 +17,9 @@ function Header() {
   //create a navigation variable--
   const navigate = useNavigate();
   const location = useLocation();
+
+  //Auth
+  const auth = useAuth();
 
   //Login form model show and hide codes--
   const [show, setShow] = useState(false);
@@ -57,7 +61,6 @@ function Header() {
   //Add username and password to LocalStorage---
   function setLocal(cname, cvalue) {
     localStorage.setItem(`"${cname}"`, `"${cvalue}"`);
-    console.log(`"${cname}"`, `"${cvalue}"`);
   }
 
   // Get user data from backend and store into the variable--
@@ -141,11 +144,8 @@ function Header() {
           `http://localhost:3030/findUser/${inputedUser.UserName}/${inputedUser.UserPassword}`
         )
         .then((res) => {
-          console.log(res.data.body);
-          console.log("inputed User: ", inputedUser.UserName);
-          console.log("inputed pass: ", inputedUser.UserPassword);
-          console.log("res data User: ", res.data.body.userName);
-          console.log("res data pass: ", res.data.body.userPassword);
+          //Auth
+          auth.login(inputedUser.UserName);
           if (res.data.body.userName == inputedUser.UserName) {
             setLocal("Arts_College_User_Id", res.data.body.userName);
             setLocal("Arts_College_User_Role", res.data.body.userRole);

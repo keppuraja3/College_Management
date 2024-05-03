@@ -4,7 +4,7 @@
 .banner-container::before{
     content: '';
     height:100%;
-position: absolute;
+    position: absolute;
     width: 100%;
     padding-left: 10px;
     background: linear-gradient(180deg ,#00000000,#00000000,#000000);

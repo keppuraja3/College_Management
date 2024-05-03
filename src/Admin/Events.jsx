@@ -68,7 +68,7 @@ function Events() {
         if (eventData.id) {
           await axios
             .post(
-              `http://localhost:3030/updateUserById/${eventData.id}`,
+              `http://localhost:3030/events/updateUserById/${eventData.id}`,
               eventData
             )
             .then((response) => {
@@ -86,7 +86,7 @@ function Events() {
           setDepartmentValid(false);
         } else {
           await axios
-            .post("http://localhost:3030/addEvent", eventData)
+            .post("http://localhost:3030/events/viewEvents", eventData)
             .then((response) => {
               return response.data;
             })
@@ -162,7 +162,7 @@ function Events() {
     const isDelete = confirm("Are you sure. You want to delete this Event? ");
     if (isDelete) {
       const deleteOutput = await axios
-        .get(`http://localhost:3030/deleteEventById/${id}`)
+        .get(`http://localhost:3030/events/deleteEventById/${id}`)
         .then((res) => {
           return res;
         })
@@ -185,7 +185,7 @@ function Events() {
   //Get users data from backend------
   const getData = async () => {
     await axios
-      .get("http://localhost:3030/viewEvets")
+      .get("http://localhost:3030/events/viewEvents")
       .then((response) => {
         setEventsData(response.data);
         setFilterEvents(response.data);
@@ -262,7 +262,8 @@ function Events() {
                       <Form.Group className="mt-1" as={Col} md="6" xs="12">
                         <Form.Label>Department</Form.Label>
                         <Form.Select
-                          name="type"
+                          name="department"
+                          aria-label="Default select"
                           onChange={addEventData}
                           value={eventData.department}
                         >
@@ -361,22 +362,22 @@ function Events() {
             </tr>
           </thead>
           <tbody>
-            {filterEvents.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.userName}</td>
+            {filterEvents.map((event) => (
+              <tr key={event.id}>
+                <td>{event.id}</td>
+                <td>{event.date}</td>
+                <td>{event.description}</td>
                 <td>
                   <Badge bg="success" className=" text-uppercase">
-                    {user.type}
+                    {event.type}
                   </Badge>
                 </td>
-                <td>{user.description}</td>
-                <td>{user.department}</td>
+                <td>{event.department}</td>
                 <td className=" d-flex justify-content-center align-items-center ">
                   <Button
                     variant="primary"
                     className="mb-2 mb-sm-0  me-1 d-flex justify-content-center align-items-center"
-                    onClick={() => editEventData(user)}
+                    onClick={() => editEventData(event)}
                   >
                     <MdEdit />
                     &nbsp;Edit
@@ -385,7 +386,7 @@ function Events() {
                     variant="danger"
                     className=" d-flex justify-content-center align-items-center "
                     onClick={() => {
-                      deleteEventData(user.id);
+                      deleteEventData(event.id);
                     }}
                   >
                     <MdDelete />
